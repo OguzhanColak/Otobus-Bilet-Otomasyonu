@@ -18,6 +18,11 @@ namespace Otobüs_Bilet_Otomasyonu
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
         Form2 f2 = new Form2();
         SqlConnection baglan = new SqlConnection("Data Source=TOSHIBA-PC\\SQLEXPRESS;Initial Catalog=Otobus-Bılet-Otomasyonu;Integrated Security=True");
 
@@ -56,5 +61,7 @@ namespace Otobüs_Bilet_Otomasyonu
             //https://youtu.be/Z-9cV6-m0Mc
 
         }
+
+
     }
 }
