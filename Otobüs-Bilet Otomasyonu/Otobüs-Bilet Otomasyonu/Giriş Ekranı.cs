@@ -24,7 +24,7 @@ namespace Otobüs_Bilet_Otomasyonu
         }
 
         Form2 f2 = new Form2();
-        SqlConnection baglan = new SqlConnection("Data Source=TOSHIBA-PC\\SQLEXPRESS;Initial Catalog=Otobus-Bılet-Otomasyonu;Integrated Security=True");
+        SqlConnection baglan = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
 
         private void verilerigoster()
         {
