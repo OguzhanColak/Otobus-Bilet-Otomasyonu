@@ -35,54 +35,31 @@ namespace Otobüs_Bilet_Otomasyonu
             // SqlDataReader oku2 = komut2.ExecuteReader();
             while (oku.Read())
             {
-                //var a = Convert.ToString(oku["KalkısVakti"]);
-                //MessageBox.Show(a,"Veritabanındaki tarih");
 
-                //var b = Convert.ToString(KalkısVakti);
-                //MessageBox.Show(b, "DatetimePicker'dan seçilen tarih");
+                string DBKalkısVaktı = oku.GetValue(4).ToString().Split()[0];
 
-                string x = oku.GetValue(4).ToString().Split()[0];
-                if (KalkısVakti == x) { MessageBox.Show("Sefer bulunuyor"); }
-                else { MessageBox.Show("Sefer bulunamadı"); }
-                // var d = Convert.ToString(oku2);
-                // MessageBox.Show(d, "Veritabanından gelen tarihin kısa yazılımı");
-
-                //List<string> myList = new List<string>();
-
-                //myList.Add(oku.GetString(4));
-                //2020-11-13 08:45:00.000
-                //DateTime dt = new DateTime(myList(0));
-
-
-
-                /*
-                string format = "dd.MM.yyyy";
-                dt.toString(format);
-                */
-
-
-
-
-
-
-
-
-
-
-
-                if (KalkısSehir == (Int32)oku["KalkısSehirID"] && VarisSehir == (Int32)oku["VarisSehirID"] && KalkısVakti == Convert.ToString(oku["KalkısVakti"]))
+                if (KalkısSehir == (Int32)oku["KalkısSehirID"] && VarisSehir == (Int32)oku["VarisSehirID"] && KalkısVakti == DBKalkısVaktı)
                 {
                     MessageBox.Show("Sorgu Çalışıyor!", "Bilgilendirme Penceresi");
-
+                    button2.Text = $"{KalkısVakti}     {comboBox1.SelectedItem}     {comboBox2.SelectedItem}";
                 }
             }
+
             baglan.Close();
+        }
+
+        private void btn_Click(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+
+            if (b.BackColor == Color.Green) { b.BackColor = SystemColors.ControlLight; }
+            else { b.BackColor = Color.Green; }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            seferlerigoster(); 
-
+            seferlerigoster();
+            
         }
     }
 }
