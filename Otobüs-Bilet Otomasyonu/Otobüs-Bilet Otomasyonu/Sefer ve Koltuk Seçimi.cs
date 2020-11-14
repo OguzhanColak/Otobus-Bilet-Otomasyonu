@@ -20,7 +20,6 @@ namespace Otobüs_Bilet_Otomasyonu
             InitializeComponent();
         }
 
-
         SqlConnection baglan = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
 
         private void seferlerigoster()

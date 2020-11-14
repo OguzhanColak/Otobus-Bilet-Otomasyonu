@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace Otobüs_Bilet_Otomasyonu
 {
-    public partial class Yönetici_Ekranı : Form
+    public partial class Ödeme_Bilgileri : Form
     {
-        public Yönetici_Ekranı()
+        public Ödeme_Bilgileri()
         {
             InitializeComponent();
         }
+
+  
     }
 }

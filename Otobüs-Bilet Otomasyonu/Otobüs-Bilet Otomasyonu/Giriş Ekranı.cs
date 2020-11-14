@@ -11,9 +11,9 @@ using System.Data.SqlClient;
 
 namespace Otobüs_Bilet_Otomasyonu
 {
-    public partial class Form1 : Form
+    public partial class Giriş_Ekranı : Form
     {
-        public Form1()
+        public Giriş_Ekranı()
         {
             InitializeComponent();
         }
@@ -23,7 +23,7 @@ namespace Otobüs_Bilet_Otomasyonu
 
         }
 
-        Form2 f2 = new Form2();
+        Yönetici_Ekranı f2 = new Yönetici_Ekranı();
         SqlConnection baglan = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
 
         private void verilerigoster()

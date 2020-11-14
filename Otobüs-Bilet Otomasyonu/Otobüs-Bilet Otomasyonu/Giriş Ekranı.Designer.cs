@@ -1,6 +1,6 @@
 ﻿namespace Otobüs_Bilet_Otomasyonu
 {
-    partial class Form1
+    partial class Giriş_Ekranı
     {
         /// <summary>
         ///Gerekli tasarımcı değişkeni.
@@ -77,7 +77,7 @@
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 2;
             // 
-            // Form1
+            // Giriş_Ekranı
             // 
             this.ClientSize = new System.Drawing.Size(252, 200);
             this.Controls.Add(this.button2);
@@ -85,7 +85,8 @@
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Name = "Form1";
+            this.Name = "Giriş_Ekranı";
+            this.Text = "Kullanıcı Girişi";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
