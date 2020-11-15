@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,51 +54,102 @@
       <DependentUpon>Giriş Ekranı.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1_Load.cs" />
-    <Compile Include="Otobüs Seferleri.cs">
+    <Compile Include="Yönetici Ekranı\Sefer Ekle.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Otobüs Seferleri.Designer.cs">
+    <Compile Include="Yönetici Ekranı\Sefer Ekle.Designer.cs">
+      <DependentUpon>Sefer Ekle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetici Ekranı\Kullanıcı Ekle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Yönetici Ekranı\Kullanıcı Ekle.Designer.cs">
+      <DependentUpon>Kullanıcı Ekle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Personel Ekranı\Musteri Bilgileri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Personel Ekranı\Musteri Bilgileri.Designer.cs">
+      <DependentUpon>Musteri Bilgileri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Personel Ekranı\Otobüs Seferleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Personel Ekranı\Otobüs Seferleri.Designer.cs">
       <DependentUpon>Otobüs Seferleri.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sefer ve Koltuk Seçimi.cs">
+    <Compile Include="Yönetici Ekranı\Oturum Bilgileri.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sefer ve Koltuk Seçimi.Designer.cs">
+    <Compile Include="Yönetici Ekranı\Oturum Bilgileri.Designer.cs">
+      <DependentUpon>Oturum Bilgileri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetici Ekranı\Personel Bilgileri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Yönetici Ekranı\Personel Bilgileri.Designer.cs">
+      <DependentUpon>Personel Bilgileri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Personel Ekranı\Sefer ve Koltuk Seçimi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Personel Ekranı\Sefer ve Koltuk Seçimi.Designer.cs">
       <DependentUpon>Sefer ve Koltuk Seçimi.cs</DependentUpon>
     </Compile>
-    <Compile Include="Yönetici Ekranı.cs">
+    <Compile Include="Yönetici Ekranı\Yönetici Ekranı.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Yönetici Ekranı.Designer.cs">
+    <Compile Include="Yönetici Ekranı\Yönetici Ekranı.Designer.cs">
       <DependentUpon>Yönetici Ekranı.cs</DependentUpon>
     </Compile>
-    <Compile Include="Personel Ekranı.cs">
+    <Compile Include="Personel Ekranı\Personel Ekranı.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Personel Ekranı.Designer.cs">
+    <Compile Include="Personel Ekranı\Personel Ekranı.Designer.cs">
       <DependentUpon>Personel Ekranı.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Ödeme Bilgileri.cs">
+    <Compile Include="Personel Ekranı\Ödeme Bilgileri.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ödeme Bilgileri.Designer.cs">
+    <Compile Include="Personel Ekranı\Ödeme Bilgileri.Designer.cs">
       <DependentUpon>Ödeme Bilgileri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetici Ekranı\İstatistikler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Yönetici Ekranı\İstatistikler.Designer.cs">
+      <DependentUpon>İstatistikler.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Giriş Ekranı.resx">
       <DependentUpon>Giriş Ekranı.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Otobüs Seferleri.resx">
+    <EmbeddedResource Include="Personel Ekranı\Musteri Bilgileri.resx">
+      <DependentUpon>Musteri Bilgileri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Personel Ekranı\Otobüs Seferleri.resx">
       <DependentUpon>Otobüs Seferleri.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Personel Ekranı.resx">
+    <EmbeddedResource Include="Yönetici Ekranı\Sefer Ekle.resx">
+      <DependentUpon>Sefer Ekle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Yönetici Ekranı\Kullanıcı Ekle.resx">
+      <DependentUpon>Kullanıcı Ekle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Yönetici Ekranı\Oturum Bilgileri.resx">
+      <DependentUpon>Oturum Bilgileri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Yönetici Ekranı\Personel Bilgileri.resx">
+      <DependentUpon>Personel Bilgileri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Personel Ekranı\Personel Ekranı.resx">
       <DependentUpon>Personel Ekranı.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sefer ve Koltuk Seçimi.resx">
+    <EmbeddedResource Include="Personel Ekranı\Sefer ve Koltuk Seçimi.resx">
       <DependentUpon>Sefer ve Koltuk Seçimi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Yönetici Ekranı.resx">
+    <EmbeddedResource Include="Yönetici Ekranı\Yönetici Ekranı.resx">
       <DependentUpon>Yönetici Ekranı.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -109,7 +161,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Ödeme Bilgileri.resx">
+    <EmbeddedResource Include="Yönetici Ekranı\İstatistikler.resx">
+      <DependentUpon>İstatistikler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Personel Ekranı\Ödeme Bilgileri.resx">
       <DependentUpon>Ödeme Bilgileri.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -125,5 +180,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

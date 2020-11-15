@@ -58,6 +58,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
+            this.button1.TabStop = false;
             this.button1.Text = "Bilet Satışı";
             this.button1.UseVisualStyleBackColor = true;
             // 
@@ -67,6 +68,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(105, 23);
             this.button2.TabIndex = 2;
+            this.button2.TabStop = false;
             this.button2.Text = "Otobüs Seferleri";
             this.button2.UseVisualStyleBackColor = true;
             // 
@@ -76,6 +78,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(91, 23);
             this.button3.TabIndex = 2;
+            this.button3.TabStop = false;
             this.button3.Text = "Müşteri Bilgileri";
             this.button3.UseVisualStyleBackColor = true;
             // 

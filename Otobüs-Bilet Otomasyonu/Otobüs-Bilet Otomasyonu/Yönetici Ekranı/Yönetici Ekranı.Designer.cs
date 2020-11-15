@@ -34,6 +34,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -55,39 +56,53 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(186, 63);
+            this.button1.Location = new System.Drawing.Point(234, 63);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 28);
             this.button1.TabIndex = 2;
+            this.button1.TabStop = false;
             this.button1.Text = "Personel Bilgileri";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(309, 63);
+            this.button2.Location = new System.Drawing.Point(340, 63);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(110, 28);
             this.button2.TabIndex = 3;
-            this.button2.Text = "Kullanıcı Ekle/Çıkar";
+            this.button2.TabStop = false;
+            this.button2.Text = "Kullanıcı Ekle";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(563, 63);
+            this.button3.Location = new System.Drawing.Point(581, 63);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(77, 28);
+            this.button3.Size = new System.Drawing.Size(85, 28);
             this.button3.TabIndex = 3;
+            this.button3.TabStop = false;
             this.button3.Text = "İstatistikler";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(438, 63);
+            this.button4.Location = new System.Drawing.Point(460, 63);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(110, 28);
             this.button4.TabIndex = 3;
-            this.button4.Text = "Sefer Ekle/Çıkar";
+            this.button4.TabStop = false;
+            this.button4.Text = "Sefer Ekle";
             this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(126, 63);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(100, 28);
+            this.button5.TabIndex = 2;
+            this.button5.TabStop = false;
+            this.button5.Text = "Oturum Bilgileri";
+            this.button5.UseVisualStyleBackColor = true;
             // 
             // Yönetici_Ekranı
             // 
@@ -97,6 +112,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button2);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
@@ -115,5 +131,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }

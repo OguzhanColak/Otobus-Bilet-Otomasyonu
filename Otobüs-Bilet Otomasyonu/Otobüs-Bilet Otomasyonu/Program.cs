@@ -16,7 +16,7 @@ namespace Otobüs_Bilet_Otomasyonu
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Otobüs_Seferleri());
+            Application.Run(new İstatistikler());
         }
     }
 }

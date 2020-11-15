@@ -20,7 +20,7 @@ namespace Otobüs_Bilet_Otomasyonu
 
         private void Otobüs_Seferleri_Load(object sender, EventArgs e)
         {
-            SqlConnection baglan = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
+            /*SqlConnection baglan = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
             baglan.Open();
             
             string vericek = "SELECT SeferID as [Sefer No], KalkısSehirID as [Kalkış Şehri], VarisSehirID as [Varış Şehri], Plaka, KalkısVakti as [Kalkış Vakti] FROM Seferler s Inner Join Otobüsler o On s.OtobusID = o.OtobusID";
@@ -28,7 +28,7 @@ namespace Otobüs_Bilet_Otomasyonu
             DataSet ds = new DataSet();
             adp.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
-            baglan.Close();
+            baglan.Close();*/
         }
     }
 }
