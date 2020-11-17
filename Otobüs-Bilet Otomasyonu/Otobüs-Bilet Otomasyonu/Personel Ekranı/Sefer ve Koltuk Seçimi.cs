@@ -21,17 +21,57 @@ namespace Otobüs_Bilet_Otomasyonu
         }
 
         SqlConnection baglan = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
+        public string seferID;
 
-        private void seferlerigoster()
+        public int koltuk_sayısı()
+        {
+            string stmt = "SELECT COUNT(*) FROM dbo.tablename";
+            int count = 0;
+
+            using (SqlConnection thisConnection = new SqlConnection("Data Source=DATASOURCE"))
+            {
+                using (SqlCommand cmdCount = new SqlCommand(stmt, thisConnection))
+                {
+                    thisConnection.Open();
+                    count = (int)cmdCount.ExecuteScalar();
+                }
+            }
+            return count;
+        }
+
+        public void koltuk_alınmıs_mı()
+        {
+            SqlConnection baglan1 = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
+            baglan1.Open();
+            SqlCommand komut = new SqlCommand($"select KoltukNo from Biletler where SeferID = {Convert.ToInt32(seferID)}", baglan1);
+            SqlDataReader oku = komut.ExecuteReader();
+
+
+            while (oku.Read())
+            {
+                string a = oku.GetInt32(0).ToString();
+                
+
+                foreach (var button in this.Controls.OfType<Button>())
+                {
+                    if(button.Text==a){ button.BackColor = Color.Red; }
+                }
+            }
+            baglan1.Close();
+
+        }
+
+        public void seferlerigoster()
         {
             int KalkısSehir = comboBox1.SelectedIndex + 1;
             int VarisSehir = comboBox2.SelectedIndex + 1;
             string KalkısVakti = dateTimePicker1.Value.ToShortDateString(); //gün-ay-yıl
+
             baglan.Open();
             SqlCommand komut = new SqlCommand("select * from Seferler", baglan);
-           // SqlCommand komut2 = new SqlCommand("SELECT system.CONVERT(VARCHAR(10), KalkısVakti, 103) from Seferler", baglan);
             SqlDataReader oku = komut.ExecuteReader();
-            // SqlDataReader oku2 = komut2.ExecuteReader();
+
+
             while (oku.Read())
             {
 
@@ -39,8 +79,16 @@ namespace Otobüs_Bilet_Otomasyonu
 
                 if (KalkısSehir == (Int32)oku["KalkısSehirID"] && VarisSehir == (Int32)oku["VarisSehirID"] && KalkısVakti == DBKalkısVaktı)
                 {
-                    MessageBox.Show("Sorgu Çalışıyor!", "Bilgilendirme Penceresi");
+                   
+                    seferID = oku["SeferID"].ToString();
+
+                    MessageBox.Show("Sorgu Çalışıyor! ", "Bilgilendirme Penceresi");
+                    MessageBox.Show(seferID, "Bilgilendirme Penceresi");
                     button2.Text = $"{KalkısVakti}     {comboBox1.SelectedItem}     {comboBox2.SelectedItem}";
+                    //eğer içeri girerse paneller oluşturulacak.
+
+                    koltuk_alınmıs_mı();
+
                 }
             }
 
@@ -58,7 +106,6 @@ namespace Otobüs_Bilet_Otomasyonu
         private void button1_Click(object sender, EventArgs e)
         {
             seferlerigoster();
-            
         }
     }
 }

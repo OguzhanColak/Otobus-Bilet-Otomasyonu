@@ -432,7 +432,7 @@ namespace Otobüs_Bilet_Otomasyonu
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(40, 50);
             this.button10.TabIndex = 9;
-            this.button10.Text = "13";
+            this.button10.Text = "30";
             this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.btn_Click);
             // 
@@ -443,7 +443,7 @@ namespace Otobüs_Bilet_Otomasyonu
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(40, 50);
             this.button16.TabIndex = 9;
-            this.button16.Text = "8";
+            this.button16.Text = "25";
             this.button16.UseVisualStyleBackColor = false;
             this.button16.Click += new System.EventHandler(this.btn_Click);
             // 
@@ -454,7 +454,7 @@ namespace Otobüs_Bilet_Otomasyonu
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(40, 50);
             this.button22.TabIndex = 9;
-            this.button22.Text = "12";
+            this.button22.Text = "27";
             this.button22.UseVisualStyleBackColor = false;
             this.button22.Click += new System.EventHandler(this.btn_Click);
             // 
@@ -465,7 +465,7 @@ namespace Otobüs_Bilet_Otomasyonu
             this.button24.Name = "button24";
             this.button24.Size = new System.Drawing.Size(40, 50);
             this.button24.TabIndex = 9;
-            this.button24.Text = "5";
+            this.button24.Text = "23";
             this.button24.UseVisualStyleBackColor = false;
             this.button24.Click += new System.EventHandler(this.btn_Click);
             // 
@@ -476,7 +476,7 @@ namespace Otobüs_Bilet_Otomasyonu
             this.button29.Name = "button29";
             this.button29.Size = new System.Drawing.Size(40, 50);
             this.button29.TabIndex = 9;
-            this.button29.Text = "18";
+            this.button29.Text = "35";
             this.button29.UseVisualStyleBackColor = false;
             this.button29.Click += new System.EventHandler(this.btn_Click);
             // 
@@ -487,7 +487,7 @@ namespace Otobüs_Bilet_Otomasyonu
             this.button30.Name = "button30";
             this.button30.Size = new System.Drawing.Size(40, 50);
             this.button30.TabIndex = 9;
-            this.button30.Text = "7";
+            this.button30.Text = "21";
             this.button30.UseVisualStyleBackColor = false;
             this.button30.Click += new System.EventHandler(this.btn_Click);
             // 
@@ -498,7 +498,7 @@ namespace Otobüs_Bilet_Otomasyonu
             this.button31.Name = "button31";
             this.button31.Size = new System.Drawing.Size(40, 50);
             this.button31.TabIndex = 9;
-            this.button31.Text = "15";
+            this.button31.Text = "33";
             this.button31.UseVisualStyleBackColor = false;
             this.button31.Click += new System.EventHandler(this.btn_Click);
             // 
@@ -509,7 +509,7 @@ namespace Otobüs_Bilet_Otomasyonu
             this.button32.Name = "button32";
             this.button32.Size = new System.Drawing.Size(40, 50);
             this.button32.TabIndex = 9;
-            this.button32.Text = "17";
+            this.button32.Text = "32";
             this.button32.UseVisualStyleBackColor = false;
             this.button32.Click += new System.EventHandler(this.btn_Click);
             // 
@@ -520,7 +520,7 @@ namespace Otobüs_Bilet_Otomasyonu
             this.button33.Name = "button33";
             this.button33.Size = new System.Drawing.Size(40, 50);
             this.button33.TabIndex = 9;
-            this.button33.Text = "10";
+            this.button33.Text = "28";
             this.button33.UseVisualStyleBackColor = false;
             this.button33.Click += new System.EventHandler(this.btn_Click);
             // 
@@ -531,7 +531,7 @@ namespace Otobüs_Bilet_Otomasyonu
             this.button34.Name = "button34";
             this.button34.Size = new System.Drawing.Size(40, 50);
             this.button34.TabIndex = 9;
-            this.button34.Text = "4";
+            this.button34.Text = "20";
             this.button34.UseVisualStyleBackColor = false;
             this.button34.Click += new System.EventHandler(this.btn_Click);
             // 
@@ -542,7 +542,7 @@ namespace Otobüs_Bilet_Otomasyonu
             this.button35.Name = "button35";
             this.button35.Size = new System.Drawing.Size(40, 50);
             this.button35.TabIndex = 9;
-            this.button35.Text = "11";
+            this.button35.Text = "29";
             this.button35.UseVisualStyleBackColor = false;
             this.button35.Click += new System.EventHandler(this.btn_Click);
             // 
@@ -553,7 +553,7 @@ namespace Otobüs_Bilet_Otomasyonu
             this.button36.Name = "button36";
             this.button36.Size = new System.Drawing.Size(40, 50);
             this.button36.TabIndex = 9;
-            this.button36.Text = "6";
+            this.button36.Text = "24";
             this.button36.UseVisualStyleBackColor = false;
             this.button36.Click += new System.EventHandler(this.btn_Click);
             // 
@@ -564,7 +564,7 @@ namespace Otobüs_Bilet_Otomasyonu
             this.button37.Name = "button37";
             this.button37.Size = new System.Drawing.Size(40, 50);
             this.button37.TabIndex = 9;
-            this.button37.Text = "14";
+            this.button37.Text = "31";
             this.button37.UseVisualStyleBackColor = false;
             this.button37.Click += new System.EventHandler(this.btn_Click);
             // 
@@ -575,7 +575,7 @@ namespace Otobüs_Bilet_Otomasyonu
             this.button38.Name = "button38";
             this.button38.Size = new System.Drawing.Size(40, 50);
             this.button38.TabIndex = 9;
-            this.button38.Text = "9";
+            this.button38.Text = "26";
             this.button38.UseVisualStyleBackColor = false;
             this.button38.Click += new System.EventHandler(this.btn_Click);
             // 
@@ -586,7 +586,7 @@ namespace Otobüs_Bilet_Otomasyonu
             this.button39.Name = "button39";
             this.button39.Size = new System.Drawing.Size(40, 50);
             this.button39.TabIndex = 9;
-            this.button39.Text = "16";
+            this.button39.Text = "34";
             this.button39.UseVisualStyleBackColor = false;
             this.button39.Click += new System.EventHandler(this.btn_Click);
             // 
