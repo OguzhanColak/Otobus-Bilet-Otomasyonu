@@ -39,7 +39,6 @@ namespace Otobüs_Bilet_Otomasyonu
             this.button2 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.button12 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -76,6 +75,7 @@ namespace Otobüs_Bilet_Otomasyonu
             this.button37 = new System.Windows.Forms.Button();
             this.button38 = new System.Windows.Forms.Button();
             this.button39 = new System.Windows.Forms.Button();
+            this.button40 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -184,16 +184,6 @@ namespace Otobüs_Bilet_Otomasyonu
             this.label3.Size = new System.Drawing.Size(211, 25);
             this.label3.TabIndex = 6;
             this.label3.Text = "Koltuk Seçme Ekranı";
-            // 
-            // button12
-            // 
-            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button12.Location = new System.Drawing.Point(640, 281);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(104, 46);
-            this.button12.TabIndex = 8;
-            this.button12.Text = "Ödeme Sayfasına Geç";
-            this.button12.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -308,9 +298,9 @@ namespace Otobüs_Bilet_Otomasyonu
             // button13
             // 
             this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button13.Location = new System.Drawing.Point(762, 281);
+            this.button13.Location = new System.Drawing.Point(751, 270);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(68, 46);
+            this.button13.Size = new System.Drawing.Size(79, 57);
             this.button13.TabIndex = 8;
             this.button13.Text = "Rezerve Ettir";
             this.button13.UseVisualStyleBackColor = true;
@@ -590,11 +580,22 @@ namespace Otobüs_Bilet_Otomasyonu
             this.button39.UseVisualStyleBackColor = false;
             this.button39.Click += new System.EventHandler(this.btn_Click);
             // 
+            // button40
+            // 
+            this.button40.Location = new System.Drawing.Point(658, 270);
+            this.button40.Name = "button40";
+            this.button40.Size = new System.Drawing.Size(87, 57);
+            this.button40.TabIndex = 11;
+            this.button40.Text = "Ödeme Ekranına Geç";
+            this.button40.UseVisualStyleBackColor = true;
+            this.button40.Click += new System.EventHandler(this.button40_Click);
+            // 
             // Sefer_ve_Koltuk_Seçimi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(891, 684);
+            this.Controls.Add(this.button40);
             this.Controls.Add(this.button28);
             this.Controls.Add(this.button39);
             this.Controls.Add(this.button27);
@@ -631,7 +632,6 @@ namespace Otobüs_Bilet_Otomasyonu
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button13);
-            this.Controls.Add(this.button12);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dateTimePicker1);
@@ -705,7 +705,6 @@ namespace Otobüs_Bilet_Otomasyonu
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
@@ -742,5 +741,6 @@ namespace Otobüs_Bilet_Otomasyonu
         private System.Windows.Forms.Button button37;
         private System.Windows.Forms.Button button38;
         private System.Windows.Forms.Button button39;
+        private System.Windows.Forms.Button button40;
     }
 }

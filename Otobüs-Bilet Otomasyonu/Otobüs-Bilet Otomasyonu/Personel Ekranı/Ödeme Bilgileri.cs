@@ -17,6 +17,10 @@ namespace Otobüs_Bilet_Otomasyonu
             InitializeComponent();
         }
 
-  
+        public void Ödeme_Bilgileri_Load(object sender, EventArgs e)
+        {
+            textBox1.Text = Sefer_ve_Koltuk_Seçimi.seferID;
+
+        }
     }
 }

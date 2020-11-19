@@ -254,6 +254,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "Ödeme_Bilgileri";
             this.Text = "Ödeme_Bilgileri";
+            this.Load += new System.EventHandler(this.Ödeme_Bilgileri_Load);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

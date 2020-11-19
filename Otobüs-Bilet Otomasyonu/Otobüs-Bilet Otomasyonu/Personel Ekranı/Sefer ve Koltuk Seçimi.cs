@@ -21,23 +21,7 @@ namespace Otobüs_Bilet_Otomasyonu
         }
 
         SqlConnection baglan = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
-        public string seferID;
-
-        public int koltuk_sayısı()
-        {
-            string stmt = "SELECT COUNT(*) FROM dbo.tablename";
-            int count = 0;
-
-            using (SqlConnection thisConnection = new SqlConnection("Data Source=DATASOURCE"))
-            {
-                using (SqlCommand cmdCount = new SqlCommand(stmt, thisConnection))
-                {
-                    thisConnection.Open();
-                    count = (int)cmdCount.ExecuteScalar();
-                }
-            }
-            return count;
-        }
+        public static string seferID;
 
         public void koltuk_alınmıs_mı()
         {
@@ -106,6 +90,17 @@ namespace Otobüs_Bilet_Otomasyonu
         private void button1_Click(object sender, EventArgs e)
         {
             seferlerigoster();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void button40_Click(object sender, EventArgs e)
+        {
+            Ödeme_Bilgileri f1 = new Ödeme_Bilgileri();
+            f1.Show();
         }
     }
 }
