@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Linq;
-
+using System.Text.RegularExpressions;
 
 namespace Otobüs_Bilet_Otomasyonu
 {
@@ -21,8 +21,8 @@ namespace Otobüs_Bilet_Otomasyonu
         }
 
         SqlConnection baglan = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
-        public static string seferID;
-
+        public static int seferID;
+        public static int kalankoltuksayısı;
         public void koltuk_alınmıs_mı()
         {
             SqlConnection baglan1 = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
@@ -47,28 +47,35 @@ namespace Otobüs_Bilet_Otomasyonu
 
         public void seferlerigoster()
         {
-            int KalkısSehir = comboBox1.SelectedIndex + 1;
-            int VarisSehir = comboBox2.SelectedIndex + 1;
-            string KalkısVakti = dateTimePicker1.Value.ToShortDateString(); //gün-ay-yıl
+            string KalkısSehir = comboBox1.Text.ToString();
+            string VarisSehir = comboBox2.Text.ToString().Trim();
+            string KalkısVakti = dateTimePicker1.Value.ToShortDateString(); // Gün-Ay-Yıl
 
             baglan.Open();
-            SqlCommand komut = new SqlCommand("select * from Seferler", baglan);
+            SqlCommand komut = new SqlCommand("select KalkısVakti, s1.SehirAdı, s2.SehirAdı, BosKoltuk, KoltukDuzeni, SeferID from Sehirler s1 inner join Seferler sf on s1.SehirID = sf.KalkısSehirID  inner join Sehirler s2 on s2.SehirID = sf.VarisSehirID inner join Otobüsler o on o.OtobusID = sf.OtobusID where SeferID = 1", baglan);
             SqlDataReader oku = komut.ExecuteReader();
 
+          
 
             while (oku.Read())
             {
 
-                string DBKalkısVaktı = oku.GetValue(4).ToString().Split()[0];
+                string DBKalkısVaktıGun = oku.GetValue(0).ToString().Split()[0]; // Gün-Ay-Yıl
+                string DBKalkısVaktıSaat = oku.GetValue(0).ToString().Split()[1];// Saat-Dakika
+                string DBKalkısSehir = oku.GetValue(1).ToString().Trim();
+                string DBVarisSehir = oku.GetValue(2).ToString().Trim();
+                
+              
 
-                if (KalkısSehir == (Int32)oku["KalkısSehirID"] && VarisSehir == (Int32)oku["VarisSehirID"] && KalkısVakti == DBKalkısVaktı)
+                if (KalkısSehir == DBKalkısSehir && VarisSehir == DBVarisSehir && KalkısVakti == DBKalkısVaktıGun)
                 {
-                   
-                    seferID = oku["SeferID"].ToString();
+
+                    seferID = oku.GetInt32(5);
+                    kalankoltuksayısı = Convert.ToInt32(oku.GetValue(3));
 
                     MessageBox.Show("Sorgu Çalışıyor! ", "Bilgilendirme Penceresi");
-                    MessageBox.Show(seferID, "Bilgilendirme Penceresi");
-                    button2.Text = $"{KalkısVakti}     {comboBox1.SelectedItem}     {comboBox2.SelectedItem}";
+                    MessageBox.Show(seferID.ToString(), "Bilgilendirme Penceresi");
+                    button2.Text = $"{KalkısVakti}     {comboBox1.SelectedItem}     {comboBox2.SelectedItem}     {DBKalkısVaktıSaat}      {kalankoltuksayısı}";
                     //eğer içeri girerse paneller oluşturulacak.
 
                     koltuk_alınmıs_mı();
@@ -90,11 +97,6 @@ namespace Otobüs_Bilet_Otomasyonu
         private void button1_Click(object sender, EventArgs e)
         {
             seferlerigoster();
-        }
-
-        private void button12_Click(object sender, EventArgs e)
-        {
-           
         }
 
         private void button40_Click(object sender, EventArgs e)

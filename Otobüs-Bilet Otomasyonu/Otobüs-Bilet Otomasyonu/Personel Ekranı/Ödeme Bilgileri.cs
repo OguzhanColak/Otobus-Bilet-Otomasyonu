@@ -19,7 +19,7 @@ namespace Otobüs_Bilet_Otomasyonu
 
         public void Ödeme_Bilgileri_Load(object sender, EventArgs e)
         {
-            textBox1.Text = Sefer_ve_Koltuk_Seçimi.seferID;
+            textBox1.Text = Sefer_ve_Koltuk_Seçimi.seferID.ToString();
 
         }
     }
