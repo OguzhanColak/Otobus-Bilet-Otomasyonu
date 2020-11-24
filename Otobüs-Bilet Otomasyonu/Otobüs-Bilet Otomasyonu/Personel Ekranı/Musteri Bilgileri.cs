@@ -20,15 +20,15 @@ namespace Otobüs_Bilet_Otomasyonu
 
         private void Musteri_Bilgileri_Load(object sender, EventArgs e)
         {
-            /*SqlConnection baglan = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
+            SqlConnection baglan = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
             baglan.Open();
 
-            string vericek = "SELECT * FROM Musteriler";
+            string vericek = "select Ad, Soyad, TC, Email, Cinsiyet, Adres, HESkodu from Musteriler";
             SqlDataAdapter adp = new SqlDataAdapter(vericek, baglan);
             DataSet ds = new DataSet();
             adp.Fill(ds);
             dataGridView2.DataSource = ds.Tables[0];
-            baglan.Close();*/
+            baglan.Close();
         }
     }
 }

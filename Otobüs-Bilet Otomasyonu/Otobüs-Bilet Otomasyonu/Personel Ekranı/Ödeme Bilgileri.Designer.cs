@@ -28,35 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtAd = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtSoyad = new System.Windows.Forms.TextBox();
+            this.txtTC = new System.Windows.Forms.TextBox();
+            this.txtCinsiyet = new System.Windows.Forms.TextBox();
+            this.txtHES = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtTelefon = new System.Windows.Forms.TextBox();
+            this.txtEposta = new System.Windows.Forms.TextBox();
+            this.txtAdres = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtAd
             // 
-            this.textBox1.Location = new System.Drawing.Point(146, 62);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtAd.Location = new System.Drawing.Point(146, 62);
+            this.txtAd.Name = "txtAd";
+            this.txtAd.Size = new System.Drawing.Size(100, 20);
+            this.txtAd.TabIndex = 0;
             // 
             // label1
             // 
@@ -77,6 +77,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Ödemeyi Yap";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -92,7 +93,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(66, 124);
+            this.label3.Location = new System.Drawing.Point(66, 155);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 20);
             this.label3.TabIndex = 1;
@@ -102,7 +103,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(33, 155);
+            this.label4.Location = new System.Drawing.Point(39, 124);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(101, 20);
             this.label4.TabIndex = 1;
@@ -118,33 +119,33 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "HES Kodu:";
             // 
-            // textBox2
+            // txtSoyad
             // 
-            this.textBox2.Location = new System.Drawing.Point(146, 94);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 0;
+            this.txtSoyad.Location = new System.Drawing.Point(146, 94);
+            this.txtSoyad.Name = "txtSoyad";
+            this.txtSoyad.Size = new System.Drawing.Size(100, 20);
+            this.txtSoyad.TabIndex = 0;
             // 
-            // textBox3
+            // txtTC
             // 
-            this.textBox3.Location = new System.Drawing.Point(146, 124);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 0;
+            this.txtTC.Location = new System.Drawing.Point(146, 124);
+            this.txtTC.Name = "txtTC";
+            this.txtTC.Size = new System.Drawing.Size(100, 20);
+            this.txtTC.TabIndex = 0;
             // 
-            // textBox4
+            // txtCinsiyet
             // 
-            this.textBox4.Location = new System.Drawing.Point(146, 157);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 0;
+            this.txtCinsiyet.Location = new System.Drawing.Point(146, 157);
+            this.txtCinsiyet.Name = "txtCinsiyet";
+            this.txtCinsiyet.Size = new System.Drawing.Size(100, 20);
+            this.txtCinsiyet.TabIndex = 0;
             // 
-            // textBox5
+            // txtHES
             // 
-            this.textBox5.Location = new System.Drawing.Point(146, 187);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 0;
+            this.txtHES.Location = new System.Drawing.Point(146, 187);
+            this.txtHES.Name = "txtHES";
+            this.txtHES.Size = new System.Drawing.Size(100, 20);
+            this.txtHES.TabIndex = 0;
             // 
             // label6
             // 
@@ -176,27 +177,27 @@
             this.label8.TabIndex = 1;
             this.label8.Text = "Adres:";
             // 
-            // textBox6
+            // txtTelefon
             // 
-            this.textBox6.Location = new System.Drawing.Point(582, 62);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 0;
+            this.txtTelefon.Location = new System.Drawing.Point(582, 62);
+            this.txtTelefon.Name = "txtTelefon";
+            this.txtTelefon.Size = new System.Drawing.Size(100, 20);
+            this.txtTelefon.TabIndex = 0;
             // 
-            // textBox7
+            // txtEposta
             // 
-            this.textBox7.Location = new System.Drawing.Point(582, 94);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 0;
+            this.txtEposta.Location = new System.Drawing.Point(582, 94);
+            this.txtEposta.Name = "txtEposta";
+            this.txtEposta.Size = new System.Drawing.Size(100, 20);
+            this.txtEposta.TabIndex = 0;
             // 
-            // textBox8
+            // txtAdres
             // 
-            this.textBox8.Location = new System.Drawing.Point(582, 124);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 81);
-            this.textBox8.TabIndex = 0;
+            this.txtAdres.Location = new System.Drawing.Point(582, 124);
+            this.txtAdres.Multiline = true;
+            this.txtAdres.Name = "txtAdres";
+            this.txtAdres.Size = new System.Drawing.Size(100, 81);
+            this.txtAdres.TabIndex = 0;
             // 
             // button2
             // 
@@ -244,14 +245,14 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtHES);
+            this.Controls.Add(this.txtCinsiyet);
+            this.Controls.Add(this.txtTC);
+            this.Controls.Add(this.txtAdres);
+            this.Controls.Add(this.txtEposta);
+            this.Controls.Add(this.txtTelefon);
+            this.Controls.Add(this.txtSoyad);
+            this.Controls.Add(this.txtAd);
             this.Name = "Ödeme_Bilgileri";
             this.Text = "Ödeme_Bilgileri";
             this.Load += new System.EventHandler(this.Ödeme_Bilgileri_Load);
@@ -263,23 +264,23 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtAd;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtSoyad;
+        private System.Windows.Forms.TextBox txtTC;
+        private System.Windows.Forms.TextBox txtCinsiyet;
+        private System.Windows.Forms.TextBox txtHES;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtTelefon;
+        private System.Windows.Forms.TextBox txtEposta;
+        private System.Windows.Forms.TextBox txtAdres;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.GroupBox groupBox1;

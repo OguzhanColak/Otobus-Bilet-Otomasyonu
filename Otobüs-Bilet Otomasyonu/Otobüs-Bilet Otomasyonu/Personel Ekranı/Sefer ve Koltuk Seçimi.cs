@@ -22,6 +22,7 @@ namespace Otobüs_Bilet_Otomasyonu
 
         SqlConnection baglan = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
         public static int seferID;
+        public static int kalkıssehirıd;
         public static int kalankoltuksayısı;
         public void koltuk_alınmıs_mı()
         {
@@ -52,7 +53,7 @@ namespace Otobüs_Bilet_Otomasyonu
             string KalkısVakti = dateTimePicker1.Value.ToShortDateString(); // Gün-Ay-Yıl
 
             baglan.Open();
-            SqlCommand komut = new SqlCommand("select KalkısVakti, s1.SehirAdı, s2.SehirAdı, BosKoltuk, KoltukDuzeni, SeferID from Sehirler s1 inner join Seferler sf on s1.SehirID = sf.KalkısSehirID  inner join Sehirler s2 on s2.SehirID = sf.VarisSehirID inner join Otobüsler o on o.OtobusID = sf.OtobusID where SeferID = 1", baglan);
+            SqlCommand komut = new SqlCommand("select KalkısVakti, s1.SehirAdı, s2.SehirAdı, BosKoltuk, KoltukDuzeni, SeferID, KalkısSehirID from Sehirler s1 inner join Seferler sf on s1.SehirID = sf.KalkısSehirID  inner join Sehirler s2 on s2.SehirID = sf.VarisSehirID inner join Otobüsler o on o.OtobusID = sf.OtobusID where SeferID = 1", baglan);
             SqlDataReader oku = komut.ExecuteReader();
 
           
@@ -64,8 +65,8 @@ namespace Otobüs_Bilet_Otomasyonu
                 string DBKalkısVaktıSaat = oku.GetValue(0).ToString().Split()[1];// Saat-Dakika
                 string DBKalkısSehir = oku.GetValue(1).ToString().Trim();
                 string DBVarisSehir = oku.GetValue(2).ToString().Trim();
-                
-              
+                kalkıssehirıd = oku.GetInt32(6);
+
 
                 if (KalkısSehir == DBKalkısSehir && VarisSehir == DBVarisSehir && KalkısVakti == DBKalkısVaktıGun)
                 {
