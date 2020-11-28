@@ -170,9 +170,9 @@ namespace Otobüs_Bilet_Otomasyonu
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(631, 98);
+            this.dateTimePicker1.Location = new System.Drawing.Point(620, 98);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(94, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(105, 20);
             this.dateTimePicker1.TabIndex = 5;
             // 
             // label3
@@ -363,6 +363,7 @@ namespace Otobüs_Bilet_Otomasyonu
             // button23
             // 
             this.button23.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button23.Enabled = false;
             this.button23.Location = new System.Drawing.Point(456, 350);
             this.button23.Name = "button23";
             this.button23.Size = new System.Drawing.Size(40, 73);

@@ -17,33 +17,79 @@ namespace Otobüs_Bilet_Otomasyonu
         {
             InitializeComponent();
         }
+        string PersonelIslem;
+        DateTime IslemZamanı;
+        int personelID;
+        bool kullanıcı_giris;
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
 
-        }
-
+        Personel_Ekranı f1 = new Personel_Ekranı();
         Yönetici_Ekranı f2 = new Yönetici_Ekranı();
+        Ödeme_Bilgileri f3 = new Ödeme_Bilgileri(null);
         SqlConnection baglan = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
 
         private void verilerigoster()
         {
             baglan.Open();
-            SqlCommand komut = new SqlCommand("select * from Personel", baglan);
+            SqlCommand komut = new SqlCommand("select KullanıcıAdı, Sifre, Ad, YoneticiID, PersonelID from Personeller", baglan);
             SqlDataReader oku = komut.ExecuteReader();
+            string KullanıcıAd = txtKullanıcıAd.Text;
+            string Sıfre = txtSıfre.Text;
 
             while (oku.Read())
             {
+                string Ad = oku.GetString(2);
+                int YöneticiID = oku.GetInt32(3);
+                string DBKullanıcıAd = oku.GetString(0);
+                string DBSıfre = oku.GetString(1);
+                personelID = oku.GetInt32(4);
 
-                if ((oku["KullanıcıAdı"].ToString() == "fevzi22") && (oku["Sifre"].ToString() == "gjeo5dk"))
+                if (DBKullanıcıAd == KullanıcıAd && DBSıfre == Sıfre)
                 {
-                    f2.label1.Text = "Fevzi kardeşim hoşgeldin";
+                    MessageBox.Show("Buraya giriyorr");
+                    MessageBox.Show(personelID.ToString());
+                    if (YöneticiID == 1)
+                    {
+                        f2.label1.Text = $"{Ad} kullanıcısı oturum açtı.";
+                        IslemZamanı = DateTime.Now;
+                        PersonelIslem = "Oturum açtı";
+                        Ödeme_Bilgileri.personelID = personelID;
+                        f2.Show();
+                    }
+                    else
+                    {
+                        f1.label1.Text = $"{Ad} kullanıcısı oturum açtı.";
+                        IslemZamanı = DateTime.Now;
+                        PersonelIslem = "Oturum açtı";
+                        Ödeme_Bilgileri.personelID = personelID;
+                        f1.Show();
+                    }
+                    kullanıcı_giris = true;
                 }
-                else if ((oku["KullanıcıAdı"].ToString() == "salihkk") && (oku["Sifre"].ToString() == "5d8cm2h"))
+                else
                 {
-                    f2.label1.Text = "Salih kardeş hoşgeldin";
+                   
                 }
             }
+            if (!kullanıcı_giris)
+            {
+                MessageBox.Show("Hatalı kullanıcı adı veya şifre girişi!!!");
+                kullanıcı_giris = false;
+            }
+            baglan.Close();
+        }
+
+        private void ıslemZamanı_turu()
+        {
+            SqlConnection baglan = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
+            SqlCommand komut;
+            string sorgu = "INSERT INTO PersonelIslem(PersonelIslem, PersonelID, IslemZamanı) VALUES (@PersonelIslem, @PersonelID, @IslemZamanı)";
+            komut = new SqlCommand(sorgu, baglan);
+            komut.Parameters.AddWithValue("@PersonelIslem", PersonelIslem);
+            komut.Parameters.AddWithValue("@PersonelID", personelID);
+            komut.Parameters.AddWithValue("@IslemZamanı", IslemZamanı);
+            baglan.Open();
+            komut.ExecuteNonQuery();
             baglan.Close();
         }
 
@@ -51,10 +97,13 @@ namespace Otobüs_Bilet_Otomasyonu
         private void button2_Click(object sender, EventArgs e)
         {
             verilerigoster();
-
+            if (kullanıcı_giris)
+            {
+                ıslemZamanı_turu();
+            }
             this.Hide();
 
-            f2.Show();
+            
 
             //Sayısal değer çekseydik: double s1 = Convert.ToDouble(textBox1.Text);
             //                            int s1 = int.Parse(textBox1.Text);

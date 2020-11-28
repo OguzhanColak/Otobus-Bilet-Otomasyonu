@@ -16,11 +16,17 @@ namespace Otobüs_Bilet_Otomasyonu
         {
             InitializeComponent();
         }
+        Sefer_ve_Koltuk_Seçimi f3 = new Sefer_ve_Koltuk_Seçimi();
 
         private void Personel_Ekranı_Load(object sender, EventArgs e)
         {
             //Panel içinde form açma
             //https://youtu.be/l_K-CgkovJI
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            f3.Show();
         }
     }
 }

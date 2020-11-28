@@ -16,5 +16,10 @@ namespace Otobüs_Bilet_Otomasyonu
         {
             InitializeComponent();
         }
+
+        private void Yönetici_Ekranı_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

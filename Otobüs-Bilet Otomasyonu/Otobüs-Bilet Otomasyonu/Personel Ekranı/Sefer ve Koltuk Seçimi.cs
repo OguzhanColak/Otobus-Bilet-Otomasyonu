@@ -15,6 +15,7 @@ namespace Otobüs_Bilet_Otomasyonu
 {
     public partial class Sefer_ve_Koltuk_Seçimi : Form
     {
+        List<string> koltuk = new List<string>();
         public Sefer_ve_Koltuk_Seçimi()
         {
             InitializeComponent();
@@ -39,11 +40,10 @@ namespace Otobüs_Bilet_Otomasyonu
 
                 foreach (var button in this.Controls.OfType<Button>())
                 {
-                    if(button.Text==a){ button.BackColor = Color.Red; }
+                    if(button.Text==a){ button.BackColor = Color.Red; button.Enabled = false; }
                 }
             }
             baglan1.Close();
-
         }
 
         public void seferlerigoster()
@@ -92,7 +92,10 @@ namespace Otobüs_Bilet_Otomasyonu
             Button b = (Button)sender;
 
             if (b.BackColor == Color.Green) { b.BackColor = SystemColors.ControlLight; }
-            else { b.BackColor = Color.Green; }
+            else 
+            { 
+                b.BackColor = Color.Green;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -102,7 +105,12 @@ namespace Otobüs_Bilet_Otomasyonu
 
         private void button40_Click(object sender, EventArgs e)
         {
-            Ödeme_Bilgileri f1 = new Ödeme_Bilgileri();
+            koltuk.Clear();
+            foreach (var button in Controls.OfType<Button>())
+            {
+                if (button.BackColor == Color.Green) { koltuk.Add(button.Text); }
+            }
+            Ödeme_Bilgileri f1 = new Ödeme_Bilgileri(koltuk);
             f1.Show();
         }
     }

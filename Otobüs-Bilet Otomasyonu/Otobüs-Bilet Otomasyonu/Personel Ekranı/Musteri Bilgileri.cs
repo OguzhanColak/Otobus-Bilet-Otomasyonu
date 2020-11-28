@@ -30,5 +30,6 @@ namespace Otobüs_Bilet_Otomasyonu
             dataGridView2.DataSource = ds.Tables[0];
             baglan.Close();
         }
+
     }
 }

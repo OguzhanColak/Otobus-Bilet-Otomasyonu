@@ -16,7 +16,7 @@ namespace Otobüs_Bilet_Otomasyonu
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Musteri_Bilgileri());
+            Application.Run(new Giriş_Ekranı());
         }
     }
 }

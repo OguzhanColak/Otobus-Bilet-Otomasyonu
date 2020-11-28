@@ -31,8 +31,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtSıfre = new System.Windows.Forms.TextBox();
+            this.txtKullanıcıAd = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label3
@@ -63,31 +63,30 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // textBox4
+            // txtSıfre
             // 
-            this.textBox4.Location = new System.Drawing.Point(107, 86);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 3;
+            this.txtSıfre.Location = new System.Drawing.Point(107, 86);
+            this.txtSıfre.Name = "txtSıfre";
+            this.txtSıfre.Size = new System.Drawing.Size(100, 20);
+            this.txtSıfre.TabIndex = 3;
             // 
-            // textBox3
+            // txtKullanıcıAd
             // 
-            this.textBox3.Location = new System.Drawing.Point(107, 44);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 2;
+            this.txtKullanıcıAd.Location = new System.Drawing.Point(107, 44);
+            this.txtKullanıcıAd.Name = "txtKullanıcıAd";
+            this.txtKullanıcıAd.Size = new System.Drawing.Size(100, 20);
+            this.txtKullanıcıAd.TabIndex = 2;
             // 
             // Giriş_Ekranı
             // 
             this.ClientSize = new System.Drawing.Size(252, 200);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtSıfre);
+            this.Controls.Add(this.txtKullanıcıAd);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Name = "Giriş_Ekranı";
             this.Text = "Kullanıcı Girişi";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -103,8 +102,8 @@
         public System.Windows.Forms.Label label3;
         public System.Windows.Forms.Label label4;
         public System.Windows.Forms.Button button2;
-        public System.Windows.Forms.TextBox textBox4;
-        public System.Windows.Forms.TextBox textBox3;
+        public System.Windows.Forms.TextBox txtSıfre;
+        public System.Windows.Forms.TextBox txtKullanıcıAd;
     }
 }
 

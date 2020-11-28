@@ -118,6 +118,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Yönetici_Ekranı";
             this.Text = "Yönetici_Ekranı";
+            this.Load += new System.EventHandler(this.Yönetici_Ekranı_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

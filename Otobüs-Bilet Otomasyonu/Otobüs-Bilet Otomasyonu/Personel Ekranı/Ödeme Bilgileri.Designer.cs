@@ -48,6 +48,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblKoltukNo = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -230,11 +231,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ödeme Türü:";
             // 
+            // lblKoltukNo
+            // 
+            this.lblKoltukNo.AutoSize = true;
+            this.lblKoltukNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblKoltukNo.Location = new System.Drawing.Point(146, 13);
+            this.lblKoltukNo.Name = "lblKoltukNo";
+            this.lblKoltukNo.Size = new System.Drawing.Size(73, 20);
+            this.lblKoltukNo.TabIndex = 4;
+            this.lblKoltukNo.Text = "koltuk no";
+            // 
             // Ödeme_Bilgileri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblKoltukNo);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label5);
@@ -284,5 +296,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblKoltukNo;
     }
 }
