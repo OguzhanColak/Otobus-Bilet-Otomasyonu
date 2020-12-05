@@ -53,7 +53,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 396);
             this.Controls.Add(this.dataGridView2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Musteri_Bilgileri";
             this.Text = "Musteri_Bilgileri";
             this.Load += new System.EventHandler(this.Musteri_Bilgileri_Load);

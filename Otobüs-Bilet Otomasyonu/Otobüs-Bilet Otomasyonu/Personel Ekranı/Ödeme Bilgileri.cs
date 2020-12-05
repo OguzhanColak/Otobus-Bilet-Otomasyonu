@@ -14,14 +14,15 @@ namespace Otobüs_Bilet_Otomasyonu
     public partial class Ödeme_Bilgileri : Form
     {
         List<string> koltuk = new List<string>();
+
         public Ödeme_Bilgileri(List<string> x)
         {
             InitializeComponent();
 
-          
-          
+
             koltuk = x;
-           //koltuk.RemoveAll(item => item == null);
+
+            //koltuk.RemoveAll(item => item == null);
 
             //if (!koltuk.Any()) { }
             //foreach (var item in x)
@@ -32,15 +33,19 @@ namespace Otobüs_Bilet_Otomasyonu
         }
 
         SqlConnection baglan2 = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
-
         SqlConnection baglan = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
         SqlCommand komut;
+
         public int aıleID;
         public static int personelID;
         public int enBuyukMusterıID;
+        public int listIndex = 0;
+
+
+
         private void musteriekle()
         {
-            
+
             string sorguSoyadlarAynıMı = "SELECT Soyad, AıleID FROM Musteriler order by AıleID desc";
             komut = new SqlCommand(sorguSoyadlarAynıMı, baglan);
             baglan.Open();
@@ -54,9 +59,20 @@ namespace Otobüs_Bilet_Otomasyonu
             aıleID++;
             baglan.Close();
 
+            string sonEklenenMusterininIDsı = "SELECT top 1 MusteriID FROM Musteriler order by MusteriID desc";
+            komut = new SqlCommand(sonEklenenMusterininIDsı, baglan2);
+            baglan2.Open();
+            SqlDataReader oku2 = komut.ExecuteReader();
+            while (oku2.Read())
+            {
+                enBuyukMusterıID = oku2.GetInt32(0);
+            }
+            baglan2.Close();
+            enBuyukMusterıID++;
 
-            string sorgu2 = "INSERT INTO Musteriler(AıleID, SehırID, Ad, Soyad, TC, Email, Cinsiyet, Adres, HESkodu) VALUES (@AıleID, @SehırID, @Ad, @Soyad, @TC, @Email, @Cinsiyet, @Adres, @HESkodu)";
+            string sorgu2 = "INSERT INTO Musteriler(MusteriID, AıleID, SehırID, Ad, Soyad, TC, Email, Cinsiyet, Adres, HESkodu) VALUES (@MusteriID, @AıleID, @SehırID, @Ad, @Soyad, @TC, @Email, @Cinsiyet, @Adres, @HESkodu)";
             komut = new SqlCommand(sorgu2, baglan);
+            komut.Parameters.AddWithValue("@MusteriID", enBuyukMusterıID);
             komut.Parameters.AddWithValue("@AıleID", aıleID);
             komut.Parameters.AddWithValue("@SehırID", Sefer_ve_Koltuk_Seçimi.kalkıssehirıd);
             komut.Parameters.AddWithValue("@Ad", txtAd.Text);
@@ -66,27 +82,20 @@ namespace Otobüs_Bilet_Otomasyonu
             komut.Parameters.AddWithValue("@Cinsiyet", txtAd.Text);
             komut.Parameters.AddWithValue("@Adres", txtAdres.Text);
             komut.Parameters.AddWithValue("@HESkodu", txtHES.Text);
+            
+            baglan.Open();
+            komut.ExecuteNonQuery();
+            baglan.Close();
+            
 
-            string sonEklenenMusterininIDsı = "SELECT top 1 MusteriID FROM Musteriler order by MusteriID desc";
-            komut = new SqlCommand(sonEklenenMusterininIDsı, baglan2);
-            baglan2.Open();
-            SqlDataReader oku2 = komut.ExecuteReader();
-            while (oku2.Read())
-            {
-                enBuyukMusterıID = oku2.GetInt32(0);                
-            }
-            baglan2.Close();
-
-
-
-            MessageBox.Show(personelID.ToString());
+            MessageBox.Show(enBuyukMusterıID.ToString());
             string sorgu3 = "INSERT INTO Biletler(PersonelID, MusteriID, SeferID, RezervasyonluMu, KoltukNo, Ucret) VALUES(@PersonelID, @MusteriID, @SeferID, @RezervasyonluMu, @KoltukNo, @Ucret)";
             komut = new SqlCommand(sorgu3, baglan);
             komut.Parameters.AddWithValue("@PersonelID", personelID);
             komut.Parameters.AddWithValue("@MusteriID", enBuyukMusterıID);
             komut.Parameters.AddWithValue("@SeferID", Sefer_ve_Koltuk_Seçimi.seferID);
             komut.Parameters.AddWithValue("@RezervasyonluMu", false);
-            komut.Parameters.AddWithValue("@KoltukNo", koltuk[0]);
+            komut.Parameters.AddWithValue("@KoltukNo", koltuk[listIndex]);
             komut.Parameters.AddWithValue("@Ucret", 100);
 
 
@@ -96,30 +105,65 @@ namespace Otobüs_Bilet_Otomasyonu
 
             MessageBox.Show("Bilet satışı başarıyla gerçekleştirildi!");
 
+
+
+            var intList = koltuk.Select(s => Convert.ToInt32(s)).ToList();
+            var sortedValues = intList.OrderBy(v => v).ToList();
+
+            if (sortedValues.Count - 1 > listIndex) //2-1 , 2-2 , 
+            {
+                listIndex++;
+            }
+            else
+            {
+                Hide();
+            }
+
+
+
+
+            lblKoltukNo.Text = $"{sortedValues[listIndex]} numaralı koltuğu alan müşterinin bilgilerini giriniz";
+
+            foreach (var textBox in Controls.OfType<TextBox>())
+            {
+                textBox.Clear();
+            }
         }
 
         public void Ödeme_Bilgileri_Load(object sender, EventArgs e)
         {
             try
             {
-                
+
+
+                var intList = koltuk.Select(s => Convert.ToInt32(s)).ToList();
+                var sortedValues = intList.OrderBy(v => v).ToList();
                 txtAd.Text = Sefer_ve_Koltuk_Seçimi.seferID.ToString();
-                
-                lblKoltukNo.Text = $"{koltuk[koltuk.Count-1]} numaralı koltuğu alan müşterinin bilgilerini giriniz";
+                //koltuk[koltuk.Count - 1]
+
+                lblKoltukNo.Text = $"{sortedValues[listIndex]} numaralı koltuğu alan müşterinin bilgilerini giriniz";
                 MessageBox.Show(personelID.ToString());
                 txtSoyad.Text = personelID.ToString();
-                
+
+                foreach (var item in sortedValues)
+                {
+                    MessageBox.Show(item.ToString());
+                    listBox1.Items.Add(item);
+                }
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-          
+
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             musteriekle();
+
+
         }
     }
 }

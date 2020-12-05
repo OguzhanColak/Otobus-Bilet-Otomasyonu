@@ -16,7 +16,7 @@ namespace Otobüs_Bilet_Otomasyonu
         {
             InitializeComponent();
         }
-        Sefer_ve_Koltuk_Seçimi f3 = new Sefer_ve_Koltuk_Seçimi();
+        
 
         private void Personel_Ekranı_Load(object sender, EventArgs e)
         {
@@ -26,6 +26,20 @@ namespace Otobüs_Bilet_Otomasyonu
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Sefer_ve_Koltuk_Seçimi f1 = new Sefer_ve_Koltuk_Seçimi();
+            f1.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Otobüs_Seferleri f2 = new Otobüs_Seferleri();
+            f2.Show();
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Musteri_Bilgileri f3 = new Musteri_Bilgileri();
             f3.Show();
         }
     }

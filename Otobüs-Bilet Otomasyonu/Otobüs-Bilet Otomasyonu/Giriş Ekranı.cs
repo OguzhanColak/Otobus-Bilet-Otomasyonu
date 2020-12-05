@@ -31,29 +31,28 @@ namespace Otobüs_Bilet_Otomasyonu
         private void verilerigoster()
         {
             baglan.Open();
-            SqlCommand komut = new SqlCommand("select KullanıcıAdı, Sifre, Ad, YoneticiID, PersonelID from Personeller", baglan);
-            SqlDataReader oku = komut.ExecuteReader();
             string KullanıcıAd = txtKullanıcıAd.Text;
             string Sıfre = txtSıfre.Text;
-
+            SqlCommand komut = new SqlCommand($"select KullanıcıAdı, Sifre, Ad, YoneticiID, PersonelID from Personeller WHERE KullanıcıAdı='{KullanıcıAd}' AND Sifre='{Sıfre}'", baglan);
+            SqlDataReader oku = null;
+            oku = komut.ExecuteReader();
+            //PictureBox pct = new PictureBox()
+            //{
+            //    Image = Properties.Resources.dosyadi
+            //};
             while (oku.Read())
             {
                 string Ad = oku.GetString(2);
                 int YöneticiID = oku.GetInt32(3);
-                string DBKullanıcıAd = oku.GetString(0);
-                string DBSıfre = oku.GetString(1);
                 personelID = oku.GetInt32(4);
-
-                if (DBKullanıcıAd == KullanıcıAd && DBSıfre == Sıfre)
-                {
-                    MessageBox.Show("Buraya giriyorr");
-                    MessageBox.Show(personelID.ToString());
                     if (YöneticiID == 1)
                     {
                         f2.label1.Text = $"{Ad} kullanıcısı oturum açtı.";
                         IslemZamanı = DateTime.Now;
                         PersonelIslem = "Oturum açtı";
+                        MessageBox.Show(personelID.ToString());
                         Ödeme_Bilgileri.personelID = personelID;
+
                         f2.Show();
                     }
                     else
@@ -65,11 +64,7 @@ namespace Otobüs_Bilet_Otomasyonu
                         f1.Show();
                     }
                     kullanıcı_giris = true;
-                }
-                else
-                {
-                   
-                }
+                
             }
             if (!kullanıcı_giris)
             {
@@ -96,18 +91,15 @@ namespace Otobüs_Bilet_Otomasyonu
 
         private void button2_Click(object sender, EventArgs e)
         {
+
             verilerigoster();
             if (kullanıcı_giris)
             {
                 ıslemZamanı_turu();
             }
-            this.Hide();
+            Hide();
 
-            
 
-            //Sayısal değer çekseydik: double s1 = Convert.ToDouble(textBox1.Text);
-            //                            int s1 = int.Parse(textBox1.Text);
-            //https://youtu.be/Z-9cV6-m0Mc
 
         }
 

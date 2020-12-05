@@ -39,11 +39,11 @@
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(81, 54);
+            this.dataGridView1.Location = new System.Drawing.Point(47, 53);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView1.Size = new System.Drawing.Size(443, 331);
+            this.dataGridView1.Size = new System.Drawing.Size(501, 331);
             this.dataGridView1.TabIndex = 0;
             // 
             // Oturum_Bilgileri
@@ -52,7 +52,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(606, 450);
             this.Controls.Add(this.dataGridView1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Oturum_Bilgileri";
             this.Text = "Oturum_Bilgileri";
             this.Load += new System.EventHandler(this.Oturum_Bilgileri_Load);

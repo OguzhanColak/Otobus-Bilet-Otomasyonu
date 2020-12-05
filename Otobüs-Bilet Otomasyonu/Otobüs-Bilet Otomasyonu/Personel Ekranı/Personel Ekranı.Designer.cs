@@ -72,6 +72,7 @@
             this.button2.TabStop = false;
             this.button2.Text = "Otobüs Seferleri";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -82,6 +83,7 @@
             this.button3.TabStop = false;
             this.button3.Text = "Müşteri Bilgileri";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Personel_Ekranı
             // 

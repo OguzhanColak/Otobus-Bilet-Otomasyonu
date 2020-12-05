@@ -44,16 +44,15 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(643, 269);
+            this.dataGridView1.Size = new System.Drawing.Size(649, 269);
             this.dataGridView1.TabIndex = 0;
             // 
             // Otobüs_Seferleri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(644, 270);
+            this.ClientSize = new System.Drawing.Size(649, 270);
             this.Controls.Add(this.dataGridView1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Otobüs_Seferleri";
             this.Text = "Otobüs_Seferleri";
             this.Load += new System.EventHandler(this.Otobüs_Seferleri_Load);

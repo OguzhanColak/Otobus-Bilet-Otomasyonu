@@ -29,6 +29,12 @@ namespace Otobüs_Bilet_Otomasyonu
             adp.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
             baglan.Close();
+            //dataGridView1.Size = ds.Tables.siz
+            dataGridView1.Columns[0].Width = 115;
+            dataGridView1.Columns[1].Width = 115;
+            dataGridView1.Columns[2].Width = 115;
+            dataGridView1.Columns[3].Width = 115;
+     
         }
     }
 }
