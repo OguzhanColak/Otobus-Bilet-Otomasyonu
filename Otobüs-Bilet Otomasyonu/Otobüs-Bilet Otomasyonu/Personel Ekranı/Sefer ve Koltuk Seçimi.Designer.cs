@@ -80,8 +80,8 @@ namespace Otobüs_Bilet_Otomasyonu
             this.SeferAra = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -129,7 +129,7 @@ namespace Otobüs_Bilet_Otomasyonu
             // dateTimePicker1
             // 
             this.dateTimePicker1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dateTimePicker1.Location = new System.Drawing.Point(617, 86);
+            this.dateTimePicker1.Location = new System.Drawing.Point(623, 86);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(103, 20);
             this.dateTimePicker1.TabIndex = 5;
@@ -590,6 +590,7 @@ namespace Otobüs_Bilet_Otomasyonu
             // 
             // panel1
             // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.Controls.Add(this.btnOdemeEkranı);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.btnRezerve);
@@ -628,29 +629,27 @@ namespace Otobüs_Bilet_Otomasyonu
             this.panel1.Controls.Add(this.btn10);
             this.panel1.Controls.Add(this.btn33);
             this.panel1.Controls.Add(this.btn32);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 64);
+            this.panel1.Location = new System.Drawing.Point(65, 226);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(777, 276);
             this.panel1.TabIndex = 12;
             // 
             // btnSeferıSec
             // 
-            this.btnSeferıSec.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSeferıSec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSeferıSec.Location = new System.Drawing.Point(0, 0);
+            this.btnSeferıSec.Location = new System.Drawing.Point(231, 12);
             this.btnSeferıSec.Name = "btnSeferıSec";
-            this.btnSeferıSec.Size = new System.Drawing.Size(777, 60);
+            this.btnSeferıSec.Size = new System.Drawing.Size(100, 60);
             this.btnSeferıSec.TabIndex = 5;
             this.btnSeferıSec.Text = "Tarih       K. Noktası - V. Noktası       Kalkış Saati        Kalan Koltuk Sayısı" +
     "       Koltuk Düzeni";
             this.btnSeferıSec.UseVisualStyleBackColor = true;
+            this.btnSeferıSec.Visible = false;
             this.btnSeferıSec.Click += new System.EventHandler(this.btnSeferıSec_Click);
             // 
             // timer1
             // 
             this.timer1.Interval = 10;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // SeferAra
             // 
@@ -666,11 +665,9 @@ namespace Otobüs_Bilet_Otomasyonu
             // panel2
             // 
             this.panel2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel2.Controls.Add(this.btnSeferıSec);
-            this.panel2.Controls.Add(this.panel1);
             this.panel2.Location = new System.Drawing.Point(65, 140);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(777, 340);
+            this.panel2.Size = new System.Drawing.Size(777, 80);
             this.panel2.TabIndex = 14;
             // 
             // timer2
@@ -678,11 +675,22 @@ namespace Otobüs_Bilet_Otomasyonu
             this.timer2.Interval = 10;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(346, 12);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(246, 56);
+            this.listBox1.TabIndex = 15;
+            // 
             // Sefer_ve_Koltuk_Seçimi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(920, 554);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btnSeferıSec);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.SeferAra);
             this.Controls.Add(this.dateTimePicker1);
@@ -696,7 +704,6 @@ namespace Otobüs_Bilet_Otomasyonu
             this.Load += new System.EventHandler(this.Sefer_ve_Koltuk_Seçimi_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -794,11 +801,12 @@ namespace Otobüs_Bilet_Otomasyonu
         private System.Windows.Forms.Button btn26;
         private System.Windows.Forms.Button btn34;
         private System.Windows.Forms.Button btnOdemeEkranı;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnSeferıSec;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button SeferAra;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.ListBox listBox1;
+        public System.Windows.Forms.Panel panel1;
     }
 }

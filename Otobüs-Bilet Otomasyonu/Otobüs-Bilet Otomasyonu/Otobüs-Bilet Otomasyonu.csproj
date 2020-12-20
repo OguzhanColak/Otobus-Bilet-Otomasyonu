@@ -54,6 +54,13 @@
       <DependentUpon>Giriş Ekranı.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1_Load.cs" />
+    <Compile Include="Otobüs Koltuk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Otobüs Koltuk.Designer.cs">
+      <DependentUpon>Otobüs Koltuk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemUser.cs" />
     <Compile Include="Yönetici Ekranı\Sefer Ekle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +132,9 @@
     <EmbeddedResource Include="Giriş Ekranı.resx">
       <DependentUpon>Giriş Ekranı.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Otobüs Koltuk.resx">
+      <DependentUpon>Otobüs Koltuk.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Personel Ekranı\Musteri Bilgileri.resx">
       <DependentUpon>Musteri Bilgileri.cs</DependentUpon>
     </EmbeddedResource>
@@ -160,6 +170,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Yönetici Ekranı\İstatistikler.resx">
       <DependentUpon>İstatistikler.cs</DependentUpon>
@@ -180,6 +191,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

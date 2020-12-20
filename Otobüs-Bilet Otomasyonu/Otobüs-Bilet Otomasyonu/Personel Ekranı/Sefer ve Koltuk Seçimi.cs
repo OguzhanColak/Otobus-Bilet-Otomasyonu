@@ -26,15 +26,13 @@ namespace Otobüs_Bilet_Otomasyonu
         public static int seferID;
         public static int kalkıssehirıd;
         public static int kalankoltuksayısı;
-        public void koltuk_alınmıs_mı()
+        public void koltuk_alınmıs_mı(int seferID)
         {
             SqlConnection baglan1 = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
             baglan1.Open();
             SqlCommand komut = new SqlCommand($"Select KoltukNo from Biletler where SeferID = {Convert.ToInt32(seferID)}", baglan1);
-
             SqlDataReader oku = komut.ExecuteReader();
-
-            MessageBox.Show($"{seferID}");
+            //MessageBox.Show($"{seferID}");
 
             foreach (Control contr in panel1.Controls)
             {
@@ -42,15 +40,9 @@ namespace Otobüs_Bilet_Otomasyonu
                 {
                     contr.BackColor = SystemColors.ControlLight;
                     contr.Enabled = true;
+                    if (contr.Text == "Ara Çıkış") { contr.Enabled = false; }
                 }
             }
-
-            //foreach (var button in this.Controls.OfType<Button>())
-            //{
-
-            //    button.BackColor = SystemColors.ControlLight;
-            //    button.Enabled = true;
-            //}
 
             if (oku.HasRows)
             {
@@ -69,11 +61,6 @@ namespace Otobüs_Bilet_Otomasyonu
                             }
                         }
                     }
-                    //foreach (var button in this.Controls.OfType<Button>())
-                    //{
-
-                    //    if (button.Text == a) { button.BackColor = Color.Red; button.Enabled = false; }
-                    //}
                 }
             }
             baglan1.Close();
@@ -84,12 +71,10 @@ namespace Otobüs_Bilet_Otomasyonu
             string KalkısSehir = comboBox1.Text.ToString().Trim();
             string VarisSehir = comboBox2.Text.ToString().Trim();
             string KalkısVakti = dateTimePicker1.Value.ToShortDateString(); // Gün-Ay-Yıl
-            
+
             baglan.Open();
             SqlCommand komut = new SqlCommand("select KalkısVakti, s1.SehirAdı,s2.SehirAdı, BosKoltuk, KoltukDuzeni, SeferID, KalkısSehirID from Sehirler s1 inner join Seferler sf on s1.SehirID = sf.KalkısSehirID  inner join Sehirler s2 on s2.SehirID = sf.VarisSehirID inner join Otobüsler o on o.OtobusID = sf.OtobusID", baglan);
             SqlDataReader oku = komut.ExecuteReader();
-
-
 
             while (oku.Read())
             {
@@ -97,14 +82,12 @@ namespace Otobüs_Bilet_Otomasyonu
                 string DBKalkısVaktıGun = oku.GetValue(0).ToString().Split()[0]; // Gün-Ay-Yıl
                 string DBKalkısVaktıSaat = oku.GetValue(0).ToString().Split()[1];// Saat-Dakika
                 string DBKalkısSehir = oku.GetValue(1).ToString().Trim();
-
                 string DBVarisSehir = oku.GetValue(2).ToString().Trim();
                 kalkıssehirıd = oku.GetInt32(6);
 
 
                 if (KalkısSehir == DBKalkısSehir && VarisSehir == DBVarisSehir && KalkısVakti == DBKalkısVaktıGun)
                 {
-
                     seferID = oku.GetInt32(5);
                     kalankoltuksayısı = Convert.ToInt32(oku.GetValue(3));
 
@@ -113,11 +96,9 @@ namespace Otobüs_Bilet_Otomasyonu
                     btnSeferıSec.Text = $"{KalkısVakti}     {comboBox1.SelectedItem}     {comboBox2.SelectedItem}     {DBKalkısVaktıSaat}      {kalankoltuksayısı}";
                     //eğer içeri girerse paneller oluşturulacak.
 
-                    koltuk_alınmıs_mı();
-
+                    //koltuk_alınmıs_mı();
                 }
             }
-
             baglan.Close();
         }
 
@@ -134,18 +115,117 @@ namespace Otobüs_Bilet_Otomasyonu
 
         private void SeferAra_Click(object sender, EventArgs e)
         {
-            panel1.Visible = true;
-            seferlerigoster();
+            //panel1.Visible = true;
+            //seferlerigoster();
+            panel1.Visible = false;
             panel2.Visible = true;
+            SeferleriDinamikGoster();
+
+        }
+
+        //dinamik buton oluşturma
+        List<string> SeferSayısı = new List<string>();
+        List<int> SeferID = new List<int>();
+
+
+        int count = 1;
+        
+        int y = 1;
+
+        public void SeferleriDinamikGoster()
+        {
+            panelTemizle();
+            string KalkısSehir = comboBox1.Text.ToString().Trim();
+            string VarisSehir = comboBox2.Text.ToString().Trim();
+            string KalkısVakti = dateTimePicker1.Value.ToShortDateString(); // Gün-Ay-Yıl
+
+            baglan.Open();
+            SqlCommand komut = new SqlCommand("select KalkısVakti, s1.SehirAdı,s2.SehirAdı, BosKoltuk, KoltukDuzeni, SeferID, KalkısSehirID from Sehirler s1 inner join Seferler sf on s1.SehirID = sf.KalkısSehirID  inner join Sehirler s2 on s2.SehirID = sf.VarisSehirID inner join Otobüsler o on o.OtobusID = sf.OtobusID", baglan);
+            SqlDataReader oku = komut.ExecuteReader();
+            int aramayaGoreCıkanSeferSayısı = 0;
+            //önce listede bir eleman varsa onlar temizlenecek
+            SeferID.Clear();
+            SeferSayısı.Clear();
+            int x = 0;
+            while (oku.Read())
+            {
+
+                string DBKalkısVaktıGun = oku.GetValue(0).ToString().Split()[0]; // Gün-Ay-Yıl
+                string DBKalkısVaktıSaat = oku.GetValue(0).ToString().Split()[1];// Saat-Dakika
+                string DBKalkısSehir = oku.GetValue(1).ToString().Trim();
+                string DBVarisSehir = oku.GetValue(2).ToString().Trim();
+
+                kalkıssehirıd = oku.GetInt32(6);
+
+                /*seferID'ler bir list'e toplanacak
+                 * hatta SeferSayısı list'esinede konulabilir. 
+                 * btn click eventine seferıd'ye göre koltuk düzeni gelir.
+                 */
+                if (KalkısSehir == DBKalkısSehir && VarisSehir == DBVarisSehir && KalkısVakti == DBKalkısVaktıGun)
+                {
+
+                    seferID = oku.GetInt32(5);
+                    SeferID.Add(seferID);
+                    kalankoltuksayısı = Convert.ToInt32(oku.GetValue(3));
+
+                    MessageBox.Show("dinamik Sorgu Çalışıyor! ", "Bilgilendirme Penceresi");
+                    //MessageBox.Show($"İçeri giren seferID: {seferID.ToString()}", "SeferID");
+                    btnSeferıSec.Text = $"{KalkısVakti}     {comboBox1.SelectedItem}     {comboBox2.SelectedItem}     {DBKalkısVaktıSaat}      {kalankoltuksayısı}";
+                    //eğer içeri girerse paneller oluşturulacak.
+                    aramayaGoreCıkanSeferSayısı++;
+
+
+                    //Her sefer button'unda 5 eleman tutulacak
+                    SeferSayısı.Add(KalkısVakti);
+                    SeferSayısı.Add(comboBox1.SelectedItem.ToString());
+                    SeferSayısı.Add(comboBox2.SelectedItem.ToString());
+                    SeferSayısı.Add(DBKalkısVaktıSaat);
+                    SeferSayısı.Add(kalankoltuksayısı.ToString());
+
+                    //koltuk_alınmıs_mı();
+                }
+            }
+            baglan.Close();
+
+            foreach (var item in SeferSayısı)
+            {
+                listBox1.Items.Add(item);
+            }
+
+            int j = 0;
+            for (int i = 0; i < aramayaGoreCıkanSeferSayısı; i++)
+            {
+               
+                    MessageBox.Show(aramayaGoreCıkanSeferSayısı.ToString());
+                    Button btn = new Button();
+                    btn.Text = $"{SeferSayısı[j]}  {SeferSayısı[j + 1]}  {SeferSayısı[j + 2]}  {SeferSayısı[j + 3]}  {SeferSayısı[j + 4]}";
+                    j = 5;
+                    btn.Name = $"{SeferID[i]}";
+                    btn.Size = new Size(100, 60);
+                    btn.Location = new Point(x, 0);
+                    btn.Click += Btn_Click;
+                    x = x + 110;
+                    count++;
+                    panel2.Controls.Add(btn);
+                
+            }
+        }
+        private void panelTemizle()
+        {
+            panel2.Controls.Clear();
+        }
+
+        private void Btn_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            panel1.Visible = true;
+            koltuk_alınmıs_mı(Convert.ToInt32(btn.Name));
+            MessageBox.Show(btn.Name);
         }
 
         private void button40_Click(object sender, EventArgs e)
         {
             koltuk.Clear();
-            //foreach (var button in Controls.OfType<Button>())
-            //{
-            //    if (button.BackColor == Color.Green) { koltuk.Add(button.Text); }
-            //}
             foreach (Control contr in panel1.Controls)
             {
                 if (contr is Button)
@@ -159,8 +239,10 @@ namespace Otobüs_Bilet_Otomasyonu
 
         private void Sefer_ve_Koltuk_Seçimi_Load(object sender, EventArgs e)
         {
+            BackColor = Color.FromArgb(43, 161, 147);
             panel2.Visible = false;
-            panel2.Height = btnSeferıSec.Height;
+            panel1.Visible = false;
+            //panel2.Height = btnSeferıSec.Height;
 
             baglan.Open();
             SqlCommand komut = new SqlCommand($"Select SehirAdı from Sehirler", baglan);
@@ -171,7 +253,6 @@ namespace Otobüs_Bilet_Otomasyonu
                 comboBox2.Items.Add(oku.GetString(0).Trim());
             }
             baglan.Close();
-
         }
 
         private void btnSeferıSec_Click(object sender, EventArgs e)
@@ -185,10 +266,11 @@ namespace Otobüs_Bilet_Otomasyonu
                 timer2.Start();
             }
         }
-
+        //dinamik olarak yan yana buton oluştur. tıklanan buton'a ait koltuk bilgileri alta doğru kaysın.
+        //buton id'si seferin id'si olsun
         private void timer1_Tick(object sender, EventArgs e)
         {
-            panel2.Height += 5; 
+            panel2.Height += 5;
             if (panel2.Height == 340)
             {
                 timer1.Stop();
