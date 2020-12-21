@@ -38,11 +38,15 @@
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnKullanıcıEkle = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -104,14 +108,26 @@
             this.Column9.HeaderText = "Şifre";
             this.Column9.Name = "Column9";
             // 
+            // btnKullanıcıEkle
+            // 
+            this.btnKullanıcıEkle.Location = new System.Drawing.Point(835, 392);
+            this.btnKullanıcıEkle.Name = "btnKullanıcıEkle";
+            this.btnKullanıcıEkle.Size = new System.Drawing.Size(121, 46);
+            this.btnKullanıcıEkle.TabIndex = 1;
+            this.btnKullanıcıEkle.Text = "Kullanıcı Ekle";
+            this.btnKullanıcıEkle.UseVisualStyleBackColor = true;
+            this.btnKullanıcıEkle.Click += new System.EventHandler(this.btnKullanıcıEkle_Click);
+            // 
             // Kullanıcı_Ekle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(973, 450);
+            this.Controls.Add(this.btnKullanıcıEkle);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Kullanıcı_Ekle";
             this.Text = "Kullanıcı_Ekle";
+            this.Load += new System.EventHandler(this.Kullanıcı_Ekle_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -129,5 +145,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.Button btnKullanıcıEkle;
     }
 }

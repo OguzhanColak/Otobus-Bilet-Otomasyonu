@@ -34,22 +34,22 @@
             this.btnOtobusSeferlerı = new System.Windows.Forms.Button();
             this.btnMusterıBılgılerı = new System.Windows.Forms.Button();
             this.pnlMenu = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblKullanıcı = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnAnasayfa = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblKullanıcı = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlMenu.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(384, 48);
+            this.label1.Location = new System.Drawing.Point(378, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(419, 39);
             this.label1.TabIndex = 0;
@@ -117,36 +117,6 @@
             this.pnlMenu.Size = new System.Drawing.Size(265, 603);
             this.pnlMenu.TabIndex = 3;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.lblKullanıcı);
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(265, 140);
-            this.panel2.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Otobüs_Bilet_Otomasyonu.Properties.Resources.user;
-            this.pictureBox1.Location = new System.Drawing.Point(71, 17);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(116, 59);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // lblKullanıcı
-            // 
-            this.lblKullanıcı.AutoSize = true;
-            this.lblKullanıcı.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblKullanıcı.Location = new System.Drawing.Point(66, 93);
-            this.lblKullanıcı.Name = "lblKullanıcı";
-            this.lblKullanıcı.Size = new System.Drawing.Size(130, 25);
-            this.lblKullanıcı.TabIndex = 1;
-            this.lblKullanıcı.Text = "Kullanıcı Adı";
-            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.btnAnasayfa);
@@ -170,6 +140,36 @@
             this.btnAnasayfa.Text = "Anasayfa";
             this.btnAnasayfa.UseVisualStyleBackColor = true;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.lblKullanıcı);
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(265, 140);
+            this.panel2.TabIndex = 0;
+            // 
+            // lblKullanıcı
+            // 
+            this.lblKullanıcı.AutoSize = true;
+            this.lblKullanıcı.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblKullanıcı.Location = new System.Drawing.Point(66, 93);
+            this.lblKullanıcı.Name = "lblKullanıcı";
+            this.lblKullanıcı.Size = new System.Drawing.Size(130, 25);
+            this.lblKullanıcı.TabIndex = 1;
+            this.lblKullanıcı.Text = "Kullanıcı Adı";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Otobüs_Bilet_Otomasyonu.Properties.Resources.user;
+            this.pictureBox1.Location = new System.Drawing.Point(71, 31);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(116, 59);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // Personel_Ekranı
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -184,10 +184,10 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Personel_Ekranı_Load);
             this.pnlMenu.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,12 +198,12 @@
         private System.Windows.Forms.Button btnOtobusSeferlerı;
         private System.Windows.Forms.Button btnMusterıBılgılerı;
         public System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel pnlMenu;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lblKullanıcı;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnAnasayfa;
         public System.Windows.Forms.Panel pnlPersonel;
+        public System.Windows.Forms.Label lblKullanıcı;
+        public System.Windows.Forms.Panel pnlMenu;
     }
 }

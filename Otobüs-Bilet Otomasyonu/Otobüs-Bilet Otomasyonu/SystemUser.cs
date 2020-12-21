@@ -21,8 +21,8 @@ namespace Otobüs_Bilet_Otomasyonu
         public DateTime OperationTime { get; set; }
         public string PersonalOperation { get; set; }
 
-        Yönetici_Ekranı ManagerScreen = new Yönetici_Ekranı();
-        Personel_Ekranı PersonalScreen = new Personel_Ekranı();
+        Yönetici_Ekranı managerScreen = new Yönetici_Ekranı();
+        Personel_Ekranı personalScreen = new Personel_Ekranı();
 
         public void login()
         {
@@ -44,21 +44,21 @@ namespace Otobüs_Bilet_Otomasyonu
 
                 if (IsManager)
                 {
-                    ManagerScreen.label1.Text = $"{Name} kullanıcısı oturum açtı.";
+                    managerScreen.label1.Text = $"{Name} kullanıcısı oturum açtı.";
                     OperationTime = DateTime.Now;
                     PersonalOperation = "Oturum açtı"; 
                     Ödeme_Bilgileri.personelID = Id;
                     IsLogın = true;
-                    ManagerScreen.Show();
+                    managerScreen.Show();
                 }
                 else if (!IsManager)
                 {
-                    PersonalScreen.label1.Text = $"{Name} kullanıcısı oturum açtı.";
+                    personalScreen.label1.Text = $"{Name} kullanıcısı oturum açtı.";
                     OperationTime = DateTime.Now;
                     PersonalOperation = "Oturum açtı";
                     Ödeme_Bilgileri.personelID = Id;
                     IsLogın = true;
-                    PersonalScreen.Show();
+                    personalScreen.Show();
                 }
                 else
                 {

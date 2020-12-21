@@ -19,10 +19,12 @@ namespace Otobüs_Bilet_Otomasyonu
         }
 
         private void Personel_Bilgileri_Load(object sender, EventArgs e)
-        {
+        {   
+            BackColor = Color.FromArgb(43, 161, 147);
+            dataGridView1.BackgroundColor = Color.FromArgb(43, 161, 147);
             SqlConnection baglan = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
             baglan.Open();
-
+            
             string vericek = "select Ad, Soyad, Email, Telefon from Personeller";
             SqlDataAdapter adp = new SqlDataAdapter(vericek, baglan);
             DataSet ds = new DataSet();

@@ -17,9 +17,12 @@ namespace Otobüs_Bilet_Otomasyonu
         {
             InitializeComponent();
         }
-
+        
         private void Musteri_Bilgileri_Load(object sender, EventArgs e)
         {
+            BackColor = Color.FromArgb(43, 161, 147);
+            dataGridView2.BackgroundColor = Color.FromArgb(43, 161, 147);
+
             SqlConnection baglan = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
             baglan.Open();
 

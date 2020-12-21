@@ -67,6 +67,7 @@
             // 
             this.txtPassword.Location = new System.Drawing.Point(107, 86);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(100, 20);
             this.txtPassword.TabIndex = 3;
             // 
@@ -88,6 +89,7 @@
             this.Name = "Giriş_Ekranı";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kullanıcı Girişi";
+            this.Load += new System.EventHandler(this.Giriş_Ekranı_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

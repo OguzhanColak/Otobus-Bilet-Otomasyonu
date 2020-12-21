@@ -23,8 +23,8 @@ namespace Otobüs_Bilet_Otomasyonu
             Otobüs_Seferleri otobüs_Seferleri = new Otobüs_Seferleri();
             Personel_Ekranı personel_Ekranı = new Personel_Ekranı();
             BackColor = Color.FromArgb(43, 161, 147);
+            dataGridView1.BackgroundColor = Color.FromArgb(43, 161, 147);
 
-            dataGridView1.BackgroundColor = DefaultBackColor;
             SqlConnection baglan = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
             baglan.Open();
 

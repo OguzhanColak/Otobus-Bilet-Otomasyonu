@@ -107,5 +107,10 @@ namespace Otobüs_Bilet_Otomasyonu
 
 
         }
+
+        private void Giriş_Ekranı_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
