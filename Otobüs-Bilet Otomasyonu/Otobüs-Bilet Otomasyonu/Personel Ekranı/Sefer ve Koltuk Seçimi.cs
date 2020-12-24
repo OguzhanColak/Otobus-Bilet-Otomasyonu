@@ -129,7 +129,7 @@ namespace Otobüs_Bilet_Otomasyonu
 
 
         int count = 1;
-        
+
         int y = 1;
 
         public void SeferleriDinamikGoster()
@@ -195,19 +195,19 @@ namespace Otobüs_Bilet_Otomasyonu
             int j = 0;
             for (int i = 0; i < aramayaGoreCıkanSeferSayısı; i++)
             {
-               
-                    MessageBox.Show(aramayaGoreCıkanSeferSayısı.ToString());
-                    Button btn = new Button();
-                    btn.Text = $"{SeferSayısı[j]}  {SeferSayısı[j + 1]}  {SeferSayısı[j + 2]}  {SeferSayısı[j + 3]}  {SeferSayısı[j + 4]}";
-                    j = 5;
-                    btn.Name = $"{SeferID[i]}";
-                    btn.Size = new Size(100, 60);
-                    btn.Location = new Point(x, 0);
-                    btn.Click += Btn_Click;
-                    x = x + 110;
-                    count++;
-                    panel2.Controls.Add(btn);
-                
+
+                MessageBox.Show(aramayaGoreCıkanSeferSayısı.ToString());
+                Button btn = new Button();
+                btn.Text = $"{SeferSayısı[j]}  {SeferSayısı[j + 1]}  {SeferSayısı[j + 2]}  {SeferSayısı[j + 3]}  {SeferSayısı[j + 4]}";
+                j = 5;
+                btn.Name = $"{SeferID[i]}";
+                btn.Size = new Size(100, 60);
+                btn.Location = new Point(x, 0);
+                btn.Click += Btn_Click;
+                x = x + 110;
+                count++;
+                panel2.Controls.Add(btn);
+
             }
         }
         private void panelTemizle()
@@ -223,17 +223,53 @@ namespace Otobüs_Bilet_Otomasyonu
             MessageBox.Show(btn.Name);
         }
 
+        //Tıklanan koltukların gönderildiği yer
         private void button40_Click(object sender, EventArgs e)
         {
+            List<int> CıftA = new List<int>() { 3, 8, 13, 18, 23, 28, 33 };
+            List<int> CıftB = new List<int>() { 2, 7, 12, 17, 22, 27, 32 };
+
             koltuk.Clear();
             foreach (Control contr in panel1.Controls)
             {
                 if (contr is Button)
                 {
                     if (contr.BackColor == Color.Green) { koltuk.Add(contr.Text); }
+
+                    if (contr.BackColor == Color.Green && (CıftA.Contains(int.Parse(contr.Text)) || CıftB.Contains(int.Parse(contr.Text))))
+                    {
+                        baglan.Open();
+                        SqlCommand komut = new SqlCommand("Select KoltukNo from Biletler", baglan);
+                        SqlDataReader oku = komut.ExecuteReader();
+                        while (oku.Read())
+                        {
+                            if (CıftA.Contains(int.Parse(contr.Text)))
+                            {
+                                if (oku.GetInt32(0) == int.Parse(contr.Text) - 1)
+                                {
+                                    //contr.Text numaralı koltuğu alan müşterinin soyadı 
+                                    //oku.GetInt32(0) numaralı koltuğun sahibiyle uyuşuyorsa
+                                    //koltuğu alabilecek.
+                                    //uyuşmazsa uyarı çıkacak.
+                                    CıftA.RemoveAll(r => r != int.Parse(contr.Text));
+                                }
+                            }
+                            else
+                            {
+                                if (oku.GetInt32(0) == int.Parse(contr.Text) + 1)
+                                {
+                                    //contr.Text numaralı koltuğu alan müşterinin soyadı 
+                                    //oku.GetInt32(0) numaralı koltuğun sahibiyle uyuşuyorsa
+                                    //koltuğu alabilecek.
+                                    //uyuşmazsa uyarı çıkacak.
+                                    CıftB.RemoveAll(r => r != int.Parse(contr.Text));
+                                }
+                            }
+                        }
+                    }
                 }
             }
-            Ödeme_Bilgileri f1 = new Ödeme_Bilgileri(koltuk);
+            Ödeme_Bilgileri f1 = new Ödeme_Bilgileri(koltuk, CıftA, CıftB);
             f1.Show();
         }
 

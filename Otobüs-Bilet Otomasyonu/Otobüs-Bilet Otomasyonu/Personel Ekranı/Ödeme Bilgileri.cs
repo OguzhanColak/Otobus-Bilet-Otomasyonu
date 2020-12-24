@@ -14,8 +14,13 @@ namespace Otobüs_Bilet_Otomasyonu
     public partial class Ödeme_Bilgileri : Form
     {
         List<string> koltuk = new List<string>();
+        List<int> CıftA = new List<int>();
+        List<int> CıftB = new List<int>();
 
-        public Ödeme_Bilgileri(List<string> x)
+        //List<int> CıftA = new List<int>() { 3, 8, 13, 18, 23, 28, 33 };
+        //List<int> CıftB = new List<int>() { 2, 7, 12, 17, 22, 27, 32 };
+
+        public Ödeme_Bilgileri(List<string> x, List<int> cıftA, List<int> cıftB)
         {
             InitializeComponent();
 
@@ -42,7 +47,6 @@ namespace Otobüs_Bilet_Otomasyonu
         public int listIndex = 0;
 
 
-
         private void musteriekle()
         {
 
@@ -52,12 +56,42 @@ namespace Otobüs_Bilet_Otomasyonu
             SqlDataReader oku = komut.ExecuteReader();
             while (oku.Read())
             {
-                if (aıleID < oku.GetInt32(1)) { aıleID = oku.GetInt32(1); }
+                if (aıleID < oku.GetInt32(1)) { aıleID = oku.GetInt32(1) + 1; }
 
-                if (txtSoyad.Text == oku.GetString(0)) { aıleID = oku.GetInt32(1); }
+                if (txtSoyad.Text == oku.GetString(0)) { aıleID = oku.GetInt32(1); break; }
             }
-            aıleID++;
             baglan.Close();
+
+            string cıftlıKoltukdakilerAıleMı = $"Select KoltukNo, AıleID from Musteriler m inner join Biletler b on m.MusteriID = b.MusteriID where b.SeferID = {Sefer_ve_Koltuk_Seçimi.seferID}";
+            komut = new SqlCommand(cıftlıKoltukdakilerAıleMı, baglan);
+            baglan.Open();
+            SqlDataReader oku3 = komut.ExecuteReader();
+            while (oku3.Read())
+            {
+                if (CıftA.Contains(oku.GetInt32(0) + 1) || CıftB.Contains(oku.GetInt32(0) - 1))
+                {
+                    if (aıleID != oku.GetInt32(1))
+                    {
+                        MessageBox.Show("İkili koltuklarda sadece aile üyeleri yan yana oturabilir. Lütfen tekli koltukları veya henüz alınmamış ikili koltukları tercih ediniz.");
+                        //eğer bu uyarı verilirse kullanıcıya koltuk seçme ekranına dönme şansı tanınacak. Koltuğu değiştirme şansı verilecek.
+                        //yada o koltuğu almaktan vazgeçme hakkı verilir. Birden fazla koltuk seçilip bu ekrana gelinmişse listenin sonraki elemanına geçilir.
+                        //Birden fazla koltuk seçilmemişse Ödeme ekranı formu kapanıp koltuk seçme ekranına dönülecek.
+                        aıleID = 0;
+                        foreach (TextBox txtBox in Controls.OfType<TextBox>())
+                        {
+                            txtBox.Clear();
+                        }
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+
+
+
+
 
             string sonEklenenMusterininIDsı = "SELECT top 1 MusteriID FROM Musteriler order by MusteriID desc";
             komut = new SqlCommand(sonEklenenMusterininIDsı, baglan2);
@@ -82,11 +116,11 @@ namespace Otobüs_Bilet_Otomasyonu
             komut.Parameters.AddWithValue("@Cinsiyet", txtAd.Text);
             komut.Parameters.AddWithValue("@Adres", txtAdres.Text);
             komut.Parameters.AddWithValue("@HESkodu", txtHES.Text);
-            
+
             baglan.Open();
             komut.ExecuteNonQuery();
             baglan.Close();
-            
+
 
             MessageBox.Show(enBuyukMusterıID.ToString());
             string sorgu3 = "INSERT INTO Biletler(PersonelID, MusteriID, SeferID, RezervasyonluMu, KoltukNo, Ucret) VALUES(@PersonelID, @MusteriID, @SeferID, @RezervasyonluMu, @KoltukNo, @Ucret)";
@@ -105,8 +139,6 @@ namespace Otobüs_Bilet_Otomasyonu
 
             MessageBox.Show("Bilet satışı başarıyla gerçekleştirildi!");
 
-
-
             var intList = koltuk.Select(s => Convert.ToInt32(s)).ToList();
             var sortedValues = intList.OrderBy(v => v).ToList();
 
@@ -118,9 +150,6 @@ namespace Otobüs_Bilet_Otomasyonu
             {
                 Hide();
             }
-
-
-
 
             lblKoltukNo.Text = $"{sortedValues[listIndex]} numaralı koltuğu alan müşterinin bilgilerini giriniz";
 
@@ -134,8 +163,6 @@ namespace Otobüs_Bilet_Otomasyonu
         {
             try
             {
-
-
                 var intList = koltuk.Select(s => Convert.ToInt32(s)).ToList();
                 var sortedValues = intList.OrderBy(v => v).ToList();
                 txtAd.Text = Sefer_ve_Koltuk_Seçimi.seferID.ToString();
@@ -150,20 +177,16 @@ namespace Otobüs_Bilet_Otomasyonu
                     MessageBox.Show(item.ToString());
                     listBox1.Items.Add(item);
                 }
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             musteriekle();
-
-
         }
     }
 }

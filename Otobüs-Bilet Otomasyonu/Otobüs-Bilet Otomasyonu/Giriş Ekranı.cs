@@ -21,10 +21,10 @@ namespace Otobüs_Bilet_Otomasyonu
         DateTime IslemZamanı;
         int personelID;
 
-
+       
         Personel_Ekranı f1 = new Personel_Ekranı();
         Yönetici_Ekranı f2 = new Yönetici_Ekranı();
-        Ödeme_Bilgileri f3 = new Ödeme_Bilgileri(null);
+        //Ödeme_Bilgileri f3 = new Ödeme_Bilgileri(null);
         SystemUser systemUser = new SystemUser();
         SqlConnection baglan = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
 
@@ -79,6 +79,12 @@ namespace Otobüs_Bilet_Otomasyonu
 
         private void ıslemZamanı_turu()
         {
+            /*
+             * 
+             * 
+             * $"INSERT INTO PersonelIslem(PersonelIslem, PersonelID, IslemZamanı) VALUES ({txt_personelIslem}, {personel_id}, {islem_zamani})";
+             * 
+             */
             SqlConnection baglan = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
             SqlCommand komut;
             string sorgu = "INSERT INTO PersonelIslem(PersonelIslem, PersonelID, IslemZamanı) VALUES (@PersonelIslem, @PersonelID, @IslemZamanı)";
@@ -96,12 +102,11 @@ namespace Otobüs_Bilet_Otomasyonu
         {
 
             verilerigoster();
-            if (systemUser.IsLogın)
+            if (systemUser.IsLogin)
             {
                 ıslemZamanı_turu();
             }
             Hide();
-
             
             
 
@@ -110,7 +115,7 @@ namespace Otobüs_Bilet_Otomasyonu
 
         private void Giriş_Ekranı_Load(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

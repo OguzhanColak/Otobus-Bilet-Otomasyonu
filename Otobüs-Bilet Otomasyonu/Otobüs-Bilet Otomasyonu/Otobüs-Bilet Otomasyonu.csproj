@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bilet Kesme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bilet Kesme.Designer.cs">
+      <DependentUpon>Bilet Kesme.cs</DependentUpon>
+    </Compile>
     <Compile Include="Giriş Ekranı.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +135,9 @@
     <Compile Include="Yönetici Ekranı\İstatistikler.Designer.cs">
       <DependentUpon>İstatistikler.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Bilet Kesme.resx">
+      <DependentUpon>Bilet Kesme.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Giriş Ekranı.resx">
       <DependentUpon>Giriş Ekranı.cs</DependentUpon>
     </EmbeddedResource>

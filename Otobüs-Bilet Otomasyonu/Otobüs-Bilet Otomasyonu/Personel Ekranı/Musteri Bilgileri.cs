@@ -26,7 +26,7 @@ namespace Otobüs_Bilet_Otomasyonu
             SqlConnection baglan = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
             baglan.Open();
 
-            string vericek = "select Ad, Soyad, TC, Email, Cinsiyet, Adres, HESkodu from Musteriler";
+            string vericek = "select  Ad, Soyad, TC, Email, Cinsiyet, Adres, HESkodu as [HES Kodu], SeferID as [Sefer Numarası], KoltukNo as [Koltuk Numarası] from Musteriler m inner join Biletler b on m.MusteriID = b.MusteriID";
             SqlDataAdapter adp = new SqlDataAdapter(vericek, baglan);
             DataSet ds = new DataSet();
             adp.Fill(ds);
