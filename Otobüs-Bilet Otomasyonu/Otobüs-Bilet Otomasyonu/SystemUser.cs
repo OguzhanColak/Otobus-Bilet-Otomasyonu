@@ -23,7 +23,7 @@ namespace Otobüs_Bilet_Otomasyonu
 
         Yönetici_Ekranı managerScreen = new Yönetici_Ekranı();
         Personel_Ekranı personalScreen = new Personel_Ekranı();
-    
+
 
         public void login()
         {
@@ -60,7 +60,7 @@ namespace Otobüs_Bilet_Otomasyonu
                         IsLogin = true;
                         managerScreen.Show();
                     }
-                    else if (!IsManager)
+                    else
                     {
                         personalScreen.label1.Text = $"{Name} kullanıcısı oturum açtı.";
                         OperationTime = DateTime.Now;
@@ -68,11 +68,6 @@ namespace Otobüs_Bilet_Otomasyonu
                         Ödeme_Bilgileri.personelID = Id;
                         IsLogin = true;
                         personalScreen.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Hatalı kullanıcı adı veya şifre girişi!!!");
-                        IsLogin = false;
                     }
                 }
             }
@@ -86,6 +81,7 @@ namespace Otobüs_Bilet_Otomasyonu
                 {
                     MessageBox.Show("Yanlış kullanıcı adı veya şifre girişi!");
                 }
+                IsLogin = false;
             }
             conn.Close();
         }
