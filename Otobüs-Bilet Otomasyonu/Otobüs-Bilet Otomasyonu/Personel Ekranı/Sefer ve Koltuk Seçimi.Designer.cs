@@ -705,7 +705,7 @@ namespace Otobüs_Bilet_Otomasyonu
     "       Koltuk Düzeni";
             this.btnSeferıSec.UseVisualStyleBackColor = true;
             this.btnSeferıSec.Visible = false;
-            this.btnSeferıSec.Click += new System.EventHandler(this.btnSeferıSec_Click);
+            
             // 
             // timer1
             // 
@@ -733,7 +733,7 @@ namespace Otobüs_Bilet_Otomasyonu
             // timer2
             // 
             this.timer2.Interval = 10;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+         
             // 
             // listBox1
             // 

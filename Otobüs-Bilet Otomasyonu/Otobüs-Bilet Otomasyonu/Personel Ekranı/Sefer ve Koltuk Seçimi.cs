@@ -36,27 +36,31 @@ namespace Otobüs_Bilet_Otomasyonu
             SqlDataReader oku = komut.ExecuteReader();
             MessageBox.Show($"Gönderilen seferıd {seferID}");
             // aşağı ulaşıyor musun ki null olduğu için veriyor hatayı
-
+            
             if (acılacakPanelTıpı == null)
             {
-                MessageBox.Show("buraya girdii");
+                MessageBox.Show("nullu kısma girdii");
                 while (oku.Read())
                 {
                     MessageBox.Show("WHİLE içinede girdi");
                     string koltukDuzenı = oku.GetString(1);
                     if (koltukDuzenı == "2+1")
                     {
+                        MessageBox.Show("koltukDuzenı == 2 + 1 kısmına girdi");
                         acılacakPanelTıpı = panel2_1;
+                        break;
                     }
                     else
                     {
                         acılacakPanelTıpı = panel2_2;
+                        break;
                     }
                 }
             }
-
+            MessageBox.Show(acılacakPanelTıpı.Name);
             foreach (Control contr in acılacakPanelTıpı.Controls)//
             {
+                
                 if (contr is Button)
                 {
                     contr.BackColor = SystemColors.ControlLight;
@@ -67,16 +71,23 @@ namespace Otobüs_Bilet_Otomasyonu
 
             if (oku.HasRows || oku.GetInt32(0).ToString() != "NULL")
             {
-                while (oku.Read())
+                //MessageBox.Show("hasrowslu satıra girebildi");
+                //MessageBox.Show(acılacakPanelTıpı.Name.ToString());
+                
+                while (oku.Read()) // BURASI CHECK EDİLECEK........................................
                 {
                     string a = oku.GetInt32(0).ToString();
-
+                    //MessageBox.Show($"{a}");
                     foreach (Control contr in acılacakPanelTıpı.Controls)
                     {
+                        //MessageBox.Show(contr.Text);
                         if (contr is Button)
                         {
+                            //MessageBox.Show($"if'in içine gelen koltuk no: {a}");
+                            //MessageBox.Show($"{a}=={contr.Text}: {a == contr.Text}");
                             if (contr.Text == a)
                             {
+                                //MessageBox.Show("butonların kırmızı yapıldığı kısma girildi.");
                                 contr.BackColor = Color.Red;
                                 contr.Enabled = false;
                             }
@@ -136,6 +147,7 @@ namespace Otobüs_Bilet_Otomasyonu
             else
             {
                 b.BackColor = Color.Green;
+
             }
         }
 
@@ -299,23 +311,31 @@ namespace Otobüs_Bilet_Otomasyonu
             koltuk.Clear();
             
             
-            MessageBox.Show($"Şuanda seçilen panel tipi: { acılacakPanelTıpı.ToString()}");
+            //MessageBox.Show($"Şuanda seçilen panel tipi: { acılacakPanelTıpı}");
             foreach (Control contr in acılacakPanelTıpı.Controls) 
             {
+                //MessageBox.Show($"Şuanda seçilen panel tipi: {acılacakPanelTıpı.Name} 2 + 1 == acılacakPanelTıpı.Name: {"2 +1" == acılacakPanelTıpı.Name}");
                 if (contr is Button)
                 {
                     if (contr.BackColor == Color.Green) { koltuk.Add(contr.Text); }
+                    //MessageBox.Show(koltuk.Count.ToString());
 
-                    if (contr.Name == acılacakPanelTıpı.ToString())
+
+
+                    if ("panel2_1" == acılacakPanelTıpı.Name)
                     {
+                        //MessageBox.Show("ıfffffffffffe");
                         if (contr.BackColor == Color.Green && (CıftA.Contains(int.Parse(contr.Text)) || CıftB.Contains(int.Parse(contr.Text))))
                         {
-                            baglan.Open();
+                            if (baglan.State == ConnectionState.Closed)
+                            {
+                                baglan.Open();
+                            }
                             SqlCommand komut = new SqlCommand("Select KoltukNo from Biletler", baglan);
                             SqlDataReader oku = komut.ExecuteReader();
                             while (oku.Read())
                             {
-                                MessageBox.Show(contr.Text);
+                                //MessageBox.Show(contr.Text);
                                 if (CıftA.Contains(int.Parse(contr.Text)))
                                 {
                                     if (oku.GetInt32(0) == int.Parse(contr.Text) - 1)
@@ -327,7 +347,7 @@ namespace Otobüs_Bilet_Otomasyonu
                                         CıftA.RemoveAll(r => r != int.Parse(contr.Text));
                                     }
                                 }
-                                else
+                                else if (CıftB.Contains(int.Parse(contr.Text)))
                                 {
                                     if (oku.GetInt32(0) == int.Parse(contr.Text) + 1)
                                     {
@@ -339,10 +359,16 @@ namespace Otobüs_Bilet_Otomasyonu
                                     }
                                 }
                             }
+                            oku.Close();
                         }
                     }
                     else
                     {
+                        //MessageBox.Show("ELSEEEEEEEEEEEE");
+                        /*
+                         * 2+1 panel olmasına rağmen
+                         */
+                        
                         //2+2 paneli
                         if (contr.BackColor == Color.Green && (CıftC.Contains(int.Parse(contr.Text)) || CıftD.Contains(int.Parse(contr.Text))))
                         {
@@ -355,7 +381,7 @@ namespace Otobüs_Bilet_Otomasyonu
 
                             while (oku.Read())
                             {
-                                MessageBox.Show(contr.Text);
+                                //MessageBox.Show(contr.Text);
                                 if (CıftC.Contains(int.Parse(contr.Text)))
                                 {
                                     if (oku.GetInt32(0) == int.Parse(contr.Text) - 1)
@@ -377,6 +403,29 @@ namespace Otobüs_Bilet_Otomasyonu
                     }
                 }
             }
+
+            if (koltuk.Count != 1)
+            {
+                
+                if (koltuk.Count > 1)
+                {
+                    MessageBox.Show("Tek seferde sadece bir koltuğa bilet alabilirsiniz!");
+                    foreach (Control c in acılacakPanelTıpı.Controls)//
+                    {
+                        if (c is Button && c.BackColor == Color.Green)
+                        {
+                            c.BackColor = SystemColors.ControlLight;
+                        }
+                    }
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Lütfen bir koltuk seçiniz!");
+                    return;
+                }
+            }
+
             Ödeme_Bilgileri f1 = new Ödeme_Bilgileri(koltuk, CıftA, CıftB,CıftC,CıftD);
             f1.Show();
         }
@@ -400,35 +449,5 @@ namespace Otobüs_Bilet_Otomasyonu
             baglan.Close();
         }
 
-        private void btnSeferıSec_Click(object sender, EventArgs e)
-        {
-            if (panel2.Height == btnSeferıSec.Height)
-            {
-                timer1.Start();
-            }
-            else
-            {
-                timer2.Start();
-            }
-        }
-        //dinamik olarak yan yana buton oluştur. tıklanan buton'a ait koltuk bilgileri alta doğru kaysın.
-        //buton id'si seferin id'si olsun
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            panel2.Height += 5;
-            if (panel2.Height == 340)
-            {
-                timer1.Stop();
-            }
-        }
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            panel2.Height -= 5;
-            if (panel2.Height == btnSeferıSec.Height)
-            {
-                timer2.Stop();
-            }
-        }
     }
 }

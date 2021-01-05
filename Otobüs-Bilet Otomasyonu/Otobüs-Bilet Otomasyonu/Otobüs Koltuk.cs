@@ -24,13 +24,15 @@ namespace Otobüs_Bilet_Otomasyonu
             SqlConnection baglan = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
             baglan.Open();
             // SqlCommand komut = new SqlCommand($"Select KoltukNo from Biletler where SeferID = {Convert.ToInt32(seferID)}", baglan1);
-            SqlCommand komut = new SqlCommand($"select o.KoltukDuzeni from Seferler s inner join Otobüsler o on s.OtobusID=o.OtobusID where s.SeferID = {seferID}", baglan);
+            SqlCommand komut = new SqlCommand($"select o.KoltukDuzeni, sf.KalkısSehirID, sf.SeferID from Seferler sf inner join Otobüsler o on sf.OtobusID=o.OtobusID  where sf.SeferID = {seferID}", baglan);
             SqlDataReader oku = komut.ExecuteReader();
-
+            
             while (oku.Read())
             {
                 string koltukDuzenı = oku.GetString(0);
+                
                 MessageBox.Show($"koltukduzenıı { koltukDuzenı}");
+                pnlOtobusKoltuk.Controls.Clear();
                 if (koltukDuzenı == "2+1")
                 {
                     pnlOtobusKoltuk.Controls.Add(sefer_Ve_Koltuk_Seçimi.panel2_1);
@@ -39,6 +41,8 @@ namespace Otobüs_Bilet_Otomasyonu
                 {
                     pnlOtobusKoltuk.Controls.Add(sefer_Ve_Koltuk_Seçimi.panel2_2);
                 }
+                Sefer_ve_Koltuk_Seçimi.kalkıssehirıd = oku.GetInt32(1);
+                Sefer_ve_Koltuk_Seçimi.seferID= oku.GetInt32(2);
             }
             baglan.Close();
             sefer_Ve_Koltuk_Seçimi.koltuk_alınmıs_mı(seferID);

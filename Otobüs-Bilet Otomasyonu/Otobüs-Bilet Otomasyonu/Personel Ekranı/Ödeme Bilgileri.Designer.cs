@@ -50,6 +50,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblKoltukNo = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.listBox3 = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -247,14 +249,32 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(308, 13);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(174, 212);
+            this.listBox1.Size = new System.Drawing.Size(174, 69);
             this.listBox1.TabIndex = 5;
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(308, 94);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(80, 121);
+            this.listBox2.TabIndex = 6;
+            // 
+            // listBox3
+            // 
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.Location = new System.Drawing.Point(394, 94);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(88, 121);
+            this.listBox3.TabIndex = 7;
             // 
             // Ödeme_Bilgileri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.listBox3);
+            this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.lblKoltukNo);
             this.Controls.Add(this.groupBox1);
@@ -308,5 +328,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblKoltukNo;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox listBox3;
     }
 }
