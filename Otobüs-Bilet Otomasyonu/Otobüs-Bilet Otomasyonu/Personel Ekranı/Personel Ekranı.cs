@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,7 +15,9 @@ namespace Otobüs_Bilet_Otomasyonu
     {
         public Personel_Ekranı()
         {
+            //Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("tr");
             InitializeComponent();
+            this.FormClosed += Personel_Ekranı_FormClosed;
         }
 
 
@@ -61,7 +64,7 @@ namespace Otobüs_Bilet_Otomasyonu
             OtobüsSeferleri.Show();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        public void button3_Click(object sender, EventArgs e)
         {
             Musteri_Bilgileri MusteriBilgileri = new Musteri_Bilgileri();
             pnlPersonel.Controls.Clear();
@@ -72,6 +75,12 @@ namespace Otobüs_Bilet_Otomasyonu
 
             pnlPersonel.Controls.Add(MusteriBilgileri);
             MusteriBilgileri.Show();
+        }
+
+
+        private void Personel_Ekranı_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

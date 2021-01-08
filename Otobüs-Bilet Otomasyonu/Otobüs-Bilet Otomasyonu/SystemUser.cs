@@ -53,7 +53,15 @@ namespace Otobüs_Bilet_Otomasyonu
 
                     if (IsManager)
                     {
-                        managerScreen.label1.Text = $"{Name} kullanıcısı oturum açtı.";
+                        if (Properties.Settings.Default.dil == "tr")
+                        {
+                            managerScreen.label1.Text = $"{Name} kullanıcısı oturum açtı.";
+                            
+                        }
+                        else if (Properties.Settings.Default.dil == "en")
+                        {
+                            managerScreen.label1.Text = $"{Name} logged in.";
+                        }
                         OperationTime = DateTime.Now;
                         PersonalOperation = "Oturum açtı";
                         Ödeme_Bilgileri.personelID = Id;
@@ -62,7 +70,16 @@ namespace Otobüs_Bilet_Otomasyonu
                     }
                     else
                     {
-                        personalScreen.label1.Text = $"{Name} kullanıcısı oturum açtı.";
+                        if (Properties.Settings.Default.dil == "tr")
+                        {
+                            personalScreen.label1.Text = $"{Name} kullanıcısı oturum açtı.";
+
+                        }
+                        else if (Properties.Settings.Default.dil == "en")
+                        {
+                            personalScreen.label1.Text = $"{Name} logged in.";
+                        }
+                        
                         OperationTime = DateTime.Now;
                         PersonalOperation = "Oturum açtı";
                         Ödeme_Bilgileri.personelID = Id;
@@ -75,11 +92,27 @@ namespace Otobüs_Bilet_Otomasyonu
             {
                 if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
                 {
-                    MessageBox.Show("Kullanıcı adı veya şifre girişi boş bırakılamaz!");
+                    if (Properties.Settings.Default.dil == "tr")
+                    {
+                        MessageBox.Show("Kullanıcı adı veya şifre girişi boş bırakılamaz!");
+
+                    }
+                    else if (Properties.Settings.Default.dil == "en")
+                    {
+                        MessageBox.Show("Username and password field cannot be empty!");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Yanlış kullanıcı adı veya şifre girişi!");
+                    if (Properties.Settings.Default.dil == "tr")
+                    {
+                        MessageBox.Show("Yanlış kullanıcı adı veya şifre girişi!");
+
+                    }
+                    else if (Properties.Settings.Default.dil == "en")
+                    {
+                        MessageBox.Show("Username or password is incorrect!");
+                    }
                 }
                 IsLogin = false;
             }

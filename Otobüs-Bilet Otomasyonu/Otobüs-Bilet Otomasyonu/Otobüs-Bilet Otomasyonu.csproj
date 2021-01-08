@@ -66,6 +66,17 @@
     <Compile Include="Otobüs Koltuk.Designer.cs">
       <DependentUpon>Otobüs Koltuk.cs</DependentUpon>
     </Compile>
+    <Compile Include="Rapor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rapor.Designer.cs">
+      <DependentUpon>Rapor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings1.settings</DependentUpon>
+    </Compile>
     <Compile Include="SystemUser.cs" />
     <Compile Include="Yönetici Ekranı\Sefer Ekle.cs">
       <SubType>Form</SubType>
@@ -138,17 +149,41 @@
     <EmbeddedResource Include="Bilet Kesme.resx">
       <DependentUpon>Bilet Kesme.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Giriş Ekranı.en.resx">
+      <DependentUpon>Giriş Ekranı.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Giriş Ekranı.resx">
       <DependentUpon>Giriş Ekranı.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Otobüs Koltuk.resx">
       <DependentUpon>Otobüs Koltuk.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Personel Ekranı\Musteri Bilgileri.en.resx">
+      <DependentUpon>Musteri Bilgileri.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Personel Ekranı\Musteri Bilgileri.resx">
       <DependentUpon>Musteri Bilgileri.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Personel Ekranı\Otobüs Seferleri.en.resx">
+      <DependentUpon>Otobüs Seferleri.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Personel Ekranı\Otobüs Seferleri.resx">
       <DependentUpon>Otobüs Seferleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Personel Ekranı\Personel Ekranı.en.resx">
+      <DependentUpon>Personel Ekranı.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Personel Ekranı\Ödeme Bilgileri.en.resx">
+      <DependentUpon>Ödeme Bilgileri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Yönetici Ekranı\Kullanıcı Ekle.en.resx">
+      <DependentUpon>Kullanıcı Ekle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Yönetici Ekranı\Personel Bilgileri.en.resx">
+      <DependentUpon>Personel Bilgileri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Yönetici Ekranı\Sefer Ekle.en.resx">
+      <DependentUpon>Sefer Ekle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Yönetici Ekranı\Sefer Ekle.resx">
       <DependentUpon>Sefer Ekle.cs</DependentUpon>
@@ -167,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Personel Ekranı\Sefer ve Koltuk Seçimi.resx">
       <DependentUpon>Sefer ve Koltuk Seçimi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Yönetici Ekranı\Yönetici Ekranı.en.resx">
+      <DependentUpon>Yönetici Ekranı.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Yönetici Ekranı\Yönetici Ekranı.resx">
       <DependentUpon>Yönetici Ekranı.cs</DependentUpon>
@@ -196,6 +234,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Settings1.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

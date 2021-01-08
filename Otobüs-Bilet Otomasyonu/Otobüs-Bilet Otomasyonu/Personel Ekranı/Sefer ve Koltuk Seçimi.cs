@@ -34,19 +34,14 @@ namespace Otobüs_Bilet_Otomasyonu
             SqlCommand komut = new SqlCommand($"select b.KoltukNo, o.KoltukDuzeni from Seferler s Full Outer Join Otobüsler o on s.OtobusID=o.OtobusID Full Outer Join Biletler b on s.SeferID = b.SeferID where s.SeferID ={seferID}", baglan1);
 
             SqlDataReader oku = komut.ExecuteReader();
-            MessageBox.Show($"Gönderilen seferıd {seferID}");
-            // aşağı ulaşıyor musun ki null olduğu için veriyor hatayı
             
             if (acılacakPanelTıpı == null)
             {
-                MessageBox.Show("nullu kısma girdii");
                 while (oku.Read())
                 {
-                    MessageBox.Show("WHİLE içinede girdi");
                     string koltukDuzenı = oku.GetString(1);
                     if (koltukDuzenı == "2+1")
                     {
-                        MessageBox.Show("koltukDuzenı == 2 + 1 kısmına girdi");
                         acılacakPanelTıpı = panel2_1;
                         break;
                     }
@@ -70,24 +65,16 @@ namespace Otobüs_Bilet_Otomasyonu
             }
 
             if (oku.HasRows || oku.GetInt32(0).ToString() != "NULL")
-            {
-                //MessageBox.Show("hasrowslu satıra girebildi");
-                //MessageBox.Show(acılacakPanelTıpı.Name.ToString());
-                
-                while (oku.Read()) // BURASI CHECK EDİLECEK........................................
+            {  
+                while (oku.Read()) 
                 {
                     string a = oku.GetInt32(0).ToString();
-                    //MessageBox.Show($"{a}");
                     foreach (Control contr in acılacakPanelTıpı.Controls)
                     {
-                        //MessageBox.Show(contr.Text);
                         if (contr is Button)
                         {
-                            //MessageBox.Show($"if'in içine gelen koltuk no: {a}");
-                            //MessageBox.Show($"{a}=={contr.Text}: {a == contr.Text}");
                             if (contr.Text == a)
                             {
-                                //MessageBox.Show("butonların kırmızı yapıldığı kısma girildi.");
                                 contr.BackColor = Color.Red;
                                 contr.Enabled = false;
                             }
@@ -138,7 +125,7 @@ namespace Otobüs_Bilet_Otomasyonu
                 baglan.Close();
             }
         }
-        //panel2'nin butonlarınada btn click eventi eklenecek
+        
         private void btn_Click(object sender, EventArgs e)
         {
             Button b = (Button)sender;
@@ -153,21 +140,16 @@ namespace Otobüs_Bilet_Otomasyonu
 
         private void SeferAra_Click(object sender, EventArgs e)
         {
-            //panel1.Visible = true;
-            //seferlerigoster();
             panel2_1.Visible = false;
             panel2.Visible = true;
             SeferleriDinamikGoster();
         }
 
-        //dinamik buton oluşturma
         List<string> SeferSayısı = new List<string>();
         List<int> SeferID = new List<int>();
         List<string> KoltukDuzenı = new List<string>();
 
-
         int count = 1;
-
         int y = 1;
 
         public void SeferleriDinamikGoster()
@@ -186,7 +168,7 @@ namespace Otobüs_Bilet_Otomasyonu
             SqlCommand komut = new SqlCommand("select KalkısVakti, s1.SehirAdı,s2.SehirAdı, BosKoltuk, KoltukDuzeni, SeferID, KalkısSehirID from Sehirler s1 inner join Seferler sf on s1.SehirID = sf.KalkısSehirID  inner join Sehirler s2 on s2.SehirID = sf.VarisSehirID inner join Otobüsler o on o.OtobusID = sf.OtobusID", baglan);
             SqlDataReader oku = komut.ExecuteReader();
             int aramayaGoreCıkanSeferSayısı = 0;
-            //önce listede bir eleman varsa onlar temizlenecek
+            
             SeferID.Clear();
             SeferSayısı.Clear();
             KoltukDuzenı.Clear();
@@ -200,10 +182,7 @@ namespace Otobüs_Bilet_Otomasyonu
 
                 kalkıssehirıd = oku.GetInt32(6);
 
-                /*seferID'ler bir list'e toplanacak
-                 * hatta SeferSayısı list'esinede konulabilir. 
-                 * btn click eventine seferıd'ye göre koltuk düzeni gelir.
-                 */
+
                 if (KalkısSehir == DBKalkısSehir && VarisSehir == DBVarisSehir && KalkısVakti == DBKalkısVaktıGun)
                 {
                     KoltukDuzenı.Add(oku.GetString(4));
@@ -211,14 +190,9 @@ namespace Otobüs_Bilet_Otomasyonu
                     SeferID.Add(seferID);
                     kalankoltuksayısı = Convert.ToInt32(oku.GetValue(3));
 
-                    MessageBox.Show("dinamik Sorgu Çalışıyor! ", "Bilgilendirme Penceresi");
-                    //MessageBox.Show($"İçeri giren seferID: {seferID.ToString()}", "SeferID");
-                    btnSeferıSec.Text = $"{KalkısVakti}     {comboBox1.SelectedItem}     {comboBox2.SelectedItem}     {DBKalkısVaktıSaat}      {kalankoltuksayısı}";
-                    //eğer içeri girerse paneller oluşturulacak.
+                    btnSeferıSec.Text = $"{KalkısVakti}     {comboBox1.SelectedItem}     {comboBox2.SelectedItem}     {DBKalkısVaktıSaat}";
                     aramayaGoreCıkanSeferSayısı++;
 
-
-                    //Her sefer button'unda 5 eleman tutulacak
                     SeferSayısı.Add(KalkısVakti);
                     SeferSayısı.Add(comboBox1.SelectedItem.ToString());
                     SeferSayısı.Add(comboBox2.SelectedItem.ToString());
@@ -310,21 +284,15 @@ namespace Otobüs_Bilet_Otomasyonu
 
             koltuk.Clear();
             
-            
-            //MessageBox.Show($"Şuanda seçilen panel tipi: { acılacakPanelTıpı}");
             foreach (Control contr in acılacakPanelTıpı.Controls) 
             {
-                //MessageBox.Show($"Şuanda seçilen panel tipi: {acılacakPanelTıpı.Name} 2 + 1 == acılacakPanelTıpı.Name: {"2 +1" == acılacakPanelTıpı.Name}");
                 if (contr is Button)
                 {
                     if (contr.BackColor == Color.Green) { koltuk.Add(contr.Text); }
-                    //MessageBox.Show(koltuk.Count.ToString());
-
-
 
                     if ("panel2_1" == acılacakPanelTıpı.Name)
                     {
-                        //MessageBox.Show("ıfffffffffffe");
+                        
                         if (contr.BackColor == Color.Green && (CıftA.Contains(int.Parse(contr.Text)) || CıftB.Contains(int.Parse(contr.Text))))
                         {
                             if (baglan.State == ConnectionState.Closed)
@@ -335,15 +303,11 @@ namespace Otobüs_Bilet_Otomasyonu
                             SqlDataReader oku = komut.ExecuteReader();
                             while (oku.Read())
                             {
-                                //MessageBox.Show(contr.Text);
+                                
                                 if (CıftA.Contains(int.Parse(contr.Text)))
                                 {
                                     if (oku.GetInt32(0) == int.Parse(contr.Text) - 1)
                                     {
-                                        //contr.Text numaralı koltuğu alan müşterinin soyadı 
-                                        //oku.GetInt32(0) numaralı koltuğun sahibiyle uyuşuyorsa
-                                        //koltuğu alabilecek.
-                                        //uyuşmazsa uyarı çıkacak.
                                         CıftA.RemoveAll(r => r != int.Parse(contr.Text));
                                     }
                                 }
@@ -351,10 +315,6 @@ namespace Otobüs_Bilet_Otomasyonu
                                 {
                                     if (oku.GetInt32(0) == int.Parse(contr.Text) + 1)
                                     {
-                                        //contr.Text numaralı koltuğu alan müşterinin soyadı 
-                                        //oku.GetInt32(0) numaralı koltuğun sahibiyle uyuşuyorsa
-                                        //koltuğu alabilecek.
-                                        //uyuşmazsa uyarı çıkacak.
                                         CıftB.RemoveAll(r => r != int.Parse(contr.Text));
                                     }
                                 }
@@ -364,12 +324,6 @@ namespace Otobüs_Bilet_Otomasyonu
                     }
                     else
                     {
-                        //MessageBox.Show("ELSEEEEEEEEEEEE");
-                        /*
-                         * 2+1 panel olmasına rağmen
-                         */
-                        
-                        //2+2 paneli
                         if (contr.BackColor == Color.Green && (CıftC.Contains(int.Parse(contr.Text)) || CıftD.Contains(int.Parse(contr.Text))))
                         {
                             if (baglan.State == ConnectionState.Closed)
@@ -381,7 +335,6 @@ namespace Otobüs_Bilet_Otomasyonu
 
                             while (oku.Read())
                             {
-                                //MessageBox.Show(contr.Text);
                                 if (CıftC.Contains(int.Parse(contr.Text)))
                                 {
                                     if (oku.GetInt32(0) == int.Parse(contr.Text) - 1)
@@ -436,7 +389,6 @@ namespace Otobüs_Bilet_Otomasyonu
             panel2.Visible = false;
             panel2_1.Visible = false;
             panel2_2.Visible = false;
-            //panel2.Height = btnSeferıSec.Height;
 
             baglan.Open();
             SqlCommand komut = new SqlCommand($"Select SehirAdı from Sehirler", baglan);

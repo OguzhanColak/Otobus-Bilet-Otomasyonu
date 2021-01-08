@@ -40,6 +40,8 @@ namespace Otobüs_Bilet_Otomasyonu
                 else
                 {
                     pnlOtobusKoltuk.Controls.Add(sefer_Ve_Koltuk_Seçimi.panel2_2);
+                    sefer_Ve_Koltuk_Seçimi.panel2_2.Location= new Point(0, 0);
+                    sefer_Ve_Koltuk_Seçimi.panel2_2.Visible = true;
                 }
                 Sefer_ve_Koltuk_Seçimi.kalkıssehirıd = oku.GetInt32(1);
                 Sefer_ve_Koltuk_Seçimi.seferID= oku.GetInt32(2);
@@ -47,6 +49,7 @@ namespace Otobüs_Bilet_Otomasyonu
             baglan.Close();
             sefer_Ve_Koltuk_Seçimi.koltuk_alınmıs_mı(seferID);
         }
+
     }
 }
 

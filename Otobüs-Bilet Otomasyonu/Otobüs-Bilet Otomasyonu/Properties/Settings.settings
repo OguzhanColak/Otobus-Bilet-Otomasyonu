@@ -10,5 +10,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True</Value>
     </Setting>
+    <Setting Name="dil" Type="System.String" Scope="User">
+      <Value Profile="(Default)">tr</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

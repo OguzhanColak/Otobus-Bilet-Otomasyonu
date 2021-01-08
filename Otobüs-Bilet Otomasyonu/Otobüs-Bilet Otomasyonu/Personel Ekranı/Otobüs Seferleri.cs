@@ -17,7 +17,7 @@ namespace Otobüs_Bilet_Otomasyonu
         {
             InitializeComponent();
         }
-
+        string vericek;
         private void Otobüs_Seferleri_Load(object sender, EventArgs e)
         {
             Otobüs_Seferleri otobüs_Seferleri = new Otobüs_Seferleri();
@@ -28,7 +28,16 @@ namespace Otobüs_Bilet_Otomasyonu
             SqlConnection baglan = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
             baglan.Open();
 
-            string vericek = "select OtobusID as [Otobüs No], SeferID as [Sefer No], s1.SehirAdı , s2.SehirAdı, KalkısVakti, VarisVakti from Sehirler s1 inner join Seferler sf on s1.SehirID = sf.KalkısSehirID inner join Sehirler s2 on s2.SehirID = sf.VarisSehirID";
+            if (Properties.Settings.Default.dil == "tr")
+            {
+                vericek = "select OtobusID as [Otobüs No], SeferID as [Sefer No], s1.SehirAdı as [Kalkış Şehir] , s2.SehirAdı as [Varış Şehir], KalkısVakti, VarisVakti from Sehirler s1 inner join Seferler sf on s1.SehirID = sf.KalkısSehirID inner join Sehirler s2 on s2.SehirID = sf.VarisSehirID";
+
+            }
+            else if (Properties.Settings.Default.dil == "en")
+            {
+                vericek = "select OtobusID as [Bus Number], SeferID as [Flight Number], s1.SehirAdı as [Departure City] , s2.SehirAdı as [Destination City], KalkısVakti as [Departure Time], VarisVakti as [Arrive Time] from Sehirler s1 inner join Seferler sf on s1.SehirID = sf.KalkısSehirID inner join Sehirler s2 on s2.SehirID = sf.VarisSehirID";
+            }
+
             SqlDataAdapter adp = new SqlDataAdapter(vericek, baglan);
             DataSet ds = new DataSet();
             adp.Fill(ds);

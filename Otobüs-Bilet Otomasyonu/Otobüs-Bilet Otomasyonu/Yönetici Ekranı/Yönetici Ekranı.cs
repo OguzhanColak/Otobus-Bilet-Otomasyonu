@@ -72,6 +72,7 @@ namespace Otobüs_Bilet_Otomasyonu
         private void button4_Click(object sender, EventArgs e)
         {
             Sefer_Ekle sefer_Ekle = new Sefer_Ekle();
+            pnlYönetici.Controls.Clear();
             sefer_Ekle.Dock = DockStyle.Fill;
             sefer_Ekle.TopLevel = false;
             sefer_Ekle.TopMost = true;
@@ -84,6 +85,7 @@ namespace Otobüs_Bilet_Otomasyonu
         private void button3_Click(object sender, EventArgs e)
         {
             İstatistikler istatistikler = new İstatistikler();
+            pnlYönetici.Controls.Clear();
             istatistikler.Dock = DockStyle.Fill;
             istatistikler.TopLevel = false;
             istatistikler.TopMost = true;

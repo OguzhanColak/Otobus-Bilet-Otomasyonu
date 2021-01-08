@@ -61,6 +61,15 @@ namespace Otobüs_Bilet_Otomasyonu.Properties {
         }
         
         /// <summary>
+        ///   tr benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string dil {
+            get {
+                return ResourceManager.GetString("dil", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
         internal static System.Drawing.Bitmap user {

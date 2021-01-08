@@ -17,14 +17,23 @@ namespace Otobüs_Bilet_Otomasyonu
         {
             InitializeComponent();
         }
-
+        string vericek;
         private void Oturum_Bilgileri_Load(object sender, EventArgs e)
         {
             BackColor = Color.FromArgb(43, 161, 147);
             SqlConnection baglan = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
             baglan.Open();
 
-            string vericek = "select p.Ad, p.Soyad, PersonelIslem as [Yapılan Eylem], IslemZamanı as [İşlem Zamanı] from Personeller p inner join PersonelIslem pı on p.PersonelID = pı.PersonelID order by IslemZamanı desc";
+            if (Properties.Settings.Default.dil == "tr")
+            {
+                vericek = "select p.Ad, p.Soyad, PersonelIslem as [Yapılan Eylem], IslemZamanı as [İşlem Zamanı] from Personeller p inner join PersonelIslem pı on p.PersonelID = pı.PersonelID order by IslemZamanı desc";
+
+            }
+            else if (Properties.Settings.Default.dil == "en")
+            {
+                vericek = "select p.Ad as Name, p.Soyad as Surname, PersonelIslem as [Operation Type], IslemZamanı as [Operation Time] from Personeller p inner join PersonelIslem pı on p.PersonelID = pı.PersonelID order by IslemZamanı desc";
+            }
+
             SqlDataAdapter adp = new SqlDataAdapter(vericek, baglan);
             DataSet ds = new DataSet();
             adp.Fill(ds);

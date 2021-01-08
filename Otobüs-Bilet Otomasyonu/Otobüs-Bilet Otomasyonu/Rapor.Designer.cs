@@ -1,7 +1,7 @@
 ﻿
 namespace Otobüs_Bilet_Otomasyonu
 {
-    partial class Otobüs_Koltuk
+    partial class Rapor
     {
         /// <summary>
         /// Required designer variable.
@@ -29,32 +29,12 @@ namespace Otobüs_Bilet_Otomasyonu
         /// </summary>
         private void InitializeComponent()
         {
-            this.pnlOtobusKoltuk = new System.Windows.Forms.Panel();
-            this.SuspendLayout();
-            // 
-            // pnlOtobusKoltuk
-            // 
-            this.pnlOtobusKoltuk.Location = new System.Drawing.Point(12, 5);
-            this.pnlOtobusKoltuk.Name = "pnlOtobusKoltuk";
-            this.pnlOtobusKoltuk.Size = new System.Drawing.Size(893, 509);
-            this.pnlOtobusKoltuk.TabIndex = 0;
-     
-            // 
-            // Otobüs_Koltuk
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(911, 533);
-            this.Controls.Add(this.pnlOtobusKoltuk);
-            this.Name = "Otobüs_Koltuk";
-            this.Text = "Otobüs_Koltuk";
-            this.Load += new System.EventHandler(this.Otobüs_Koltuk_Load);
-            this.ResumeLayout(false);
-
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Text = "Rapor";
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel pnlOtobusKoltuk;
     }
 }

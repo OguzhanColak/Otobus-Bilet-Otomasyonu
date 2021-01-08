@@ -21,41 +21,75 @@ namespace Otobüs_Bilet_Otomasyonu
         private void Kullanıcı_Ekle_Load(object sender, EventArgs e)
         {
             BackColor = Color.FromArgb(43, 161, 147);
-            dataGridView1.BackgroundColor = Color.FromArgb(43, 161, 147);
+
         }
 
         SqlConnection baglan = new SqlConnection("Data Source=DESKTOP-BMGTNCU;Initial Catalog=Otobus_Bılet_Otomasyonu;Integrated Security=True");
-        SqlCommand komut;
+        
+        int enBuyukPersonelID;
         private void btnKullanıcıEkle_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(dataGridView1.Rows[0].Cells[0].Value.ToString());
-            string sorgu = "INSERT INTO Personeller(PersonelID, SubeID, YoneticiID, Ad, Soyad, Email, Telefon, KullanıcıAdı, Sifre) VALUES (@PersonelID, @SubeID, @YoneticiID, @Ad, @Soyad, @Email, @Telefon, @KullanıcıAdı, @Sifre)";
+            baglan.Open();
+            SqlCommand komut = new SqlCommand("select Top 1 PersonelID from Personeller order by PersonelID desc", baglan);
+            SqlDataReader oku = komut.ExecuteReader();
+
+            while (oku.Read())
+            {
+                enBuyukPersonelID = oku.GetInt32(0);
+            }
+            baglan.Close();
+
+            string sorgu = "INSERT INTO Personeller(PersonelID, YoneticiID, Ad, Soyad, Email, Telefon, KullanıcıAdı, Sifre) VALUES (@PersonelID, @YoneticiID, @Ad, @Soyad, @Email, @Telefon, @KullanıcıAdı, @Sifre)";
             komut = new SqlCommand(sorgu, baglan);
 
-            komut.Parameters.AddWithValue("@PersonelID", dataGridView1.Rows[0].Cells[0].Value);
-            komut.Parameters.AddWithValue("@SubeID", dataGridView1.Rows[0].Cells[1].Value);
-            komut.Parameters.AddWithValue("@YoneticiID", dataGridView1.Rows[0].Cells[2].Value);
-            komut.Parameters.AddWithValue("@Ad", dataGridView1.Rows[0].Cells[3].Value);
-            komut.Parameters.AddWithValue("@Soyad", dataGridView1.Rows[0].Cells[4].Value);
-            komut.Parameters.AddWithValue("@Email", dataGridView1.Rows[0].Cells[5].Value);
-            komut.Parameters.AddWithValue("@Telefon", dataGridView1.Rows[0].Cells[6].Value);
-            komut.Parameters.AddWithValue("@KullanıcıAdı", dataGridView1.Rows[0].Cells[7].Value);
-            komut.Parameters.AddWithValue("@Sifre", dataGridView1.Rows[0].Cells[8].Value);
-
+            komut.Parameters.AddWithValue("@PersonelID", enBuyukPersonelID + 1);
+            komut.Parameters.AddWithValue("@YoneticiID", checkBox1.Checked);
+            komut.Parameters.AddWithValue("@Ad", textBox1.Text);
+            komut.Parameters.AddWithValue("@Soyad", textBox2.Text);
+            komut.Parameters.AddWithValue("@Email", textBox3.Text);
+            komut.Parameters.AddWithValue("@Telefon", textBox4.Text);
+            komut.Parameters.AddWithValue("@KullanıcıAdı", textBox5.Text);
+            komut.Parameters.AddWithValue("@Sifre", textBox6.Text);
 
             baglan.Open();
             komut.ExecuteNonQuery();
             baglan.Close();
 
-            MessageBox.Show("Kullanıcı Başarıyla Eklendi.");
-            for (int i = 0; i < dataGridView1.Columns.Count; i++)
+            DialogResult dialogResult = new DialogResult();
+
+            if (Properties.Settings.Default.dil == "tr")
             {
-                for (int j = 0; j < dataGridView1.Rows.Count; j++)
+                dialogResult = MessageBox.Show($"{textBox1.Text} adlı kullanıcıyı sisteme eklemek istediğinizden istediğinizden emin misiniz?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            }
+            else 
+            {
+                dialogResult = MessageBox.Show($"Are you sure you want to add {textBox1.Text} user to the system?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            }
+
+            if (dialogResult == DialogResult.Yes)
+            {
+
+                if (Properties.Settings.Default.dil == "tr")
                 {
-                    dataGridView1.Rows[j].Cells[i].Value = "";
+                    MessageBox.Show("Kullanıcı Başarıyla Eklendi.");
+                }
+                else
+                {
+                    MessageBox.Show("User successfully added.");
                 }
             }
 
+            foreach (Control control in Controls)
+            {
+                if (control is TextBox)
+                {
+                    ((TextBox)control).Clear();
+                }
+                else if (control is CheckBox)
+                {       
+                    ((CheckBox)control).Checked = false;
+                }
+            }
         }
     }
 }

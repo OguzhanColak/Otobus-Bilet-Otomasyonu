@@ -73,5 +73,20 @@ namespace Otobüs_Bilet_Otomasyonu
         {
 
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.dil == "tr")
+            {
+                Properties.Settings.Default.dil = "en";
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.dil = "tr";
+                Properties.Settings.Default.Save();
+            }
+            Application.Restart();
+        }
     }
 }

@@ -33,7 +33,7 @@ namespace Otobüs_Bilet_Otomasyonu
             CıftB = cıftB;
             CıftC = cıftC;
             CıftD = cıftD;
-
+           
             //koltuk.RemoveAll(item => item == null);
 
             //if (!koltuk.Any()) { }
@@ -81,31 +81,22 @@ namespace Otobüs_Bilet_Otomasyonu
             baglan.Open();
             SqlDataReader oku3 = komut.ExecuteReader();
             while (oku3.Read())
-            {//koltuk sayıları düzeltildiğinden algoritma da düzeltiekecl
+            {
                 int asd = 0;
                 if ((CıftA.Contains(oku3.GetInt32(0) + 1) || CıftB.Contains(oku3.GetInt32(0) - 1)) && (CıftA.Count != 7 || CıftB.Count != 7))
                 {
-                    foreach (var item in CıftA)
-                    {
-                        MessageBox.Show(item.ToString());
-                        listBox2.Items.Add(item);
-                    }
-                    foreach (var item in CıftB)
-                    {
-                        MessageBox.Show(item.ToString());
-                        listBox3.Items.Add(item);
-                    }
-
-                    MessageBox.Show("cıftA ve cıftB 'ye girdi.");
-                   //MessageBox.Show($"CıftA.Contains(oku3.GetInt32(0) + 1): {CıftA.Contains(oku3.GetInt32(0) + 1)}");
-                    MessageBox.Show($"CıftB.Contains(oku3.GetInt32(0) - 1): {CıftB.Contains(oku3.GetInt32(0) - 1)}");
-                    MessageBox.Show($"oku3.GetInt32(0) - 1): {oku3.GetInt32(0) - 1}");
+                    //foreach (var item in CıftA)
+                    //{
+                    //    MessageBox.Show(item.ToString());
+                    //    listBox2.Items.Add(item);
+                    //}
+                    //foreach (var item in CıftB)
+                    //{
+                    //    MessageBox.Show(item.ToString());
+                    //    listBox3.Items.Add(item);
+                    //}
 
 
-
-                    //MessageBox.Show($"İçeri giren CıftA: {CıftA[asd]}");
-                    //MessageBox.Show($"İçeri giren CıftB: {CıftB[asd]}");
-                    //MessageBox.Show($"İçeri giren oku3.GetInt32(0): {oku3.GetInt32(0)}");
                     asd++;
                     if (aıleID == oku3.GetInt32(1))
                     {
@@ -133,9 +124,6 @@ namespace Otobüs_Bilet_Otomasyonu
                 }
                 else if ((CıftC.Contains(oku3.GetInt32(0) + 1) || CıftD.Contains(oku3.GetInt32(0) - 1)) && (CıftC.Count != 27 || CıftD.Count != 27))
                 {
-                    //MessageBox.Show($"aıleID: {aıleID}");
-                    //MessageBox.Show("BAŞKAYA GİRİYOR");
-                    MessageBox.Show("cıftC ve cıftD 'ye girdi.");
                     if (aıleID == oku3.GetInt32(1))
                     {
                         y = true;
@@ -175,18 +163,26 @@ namespace Otobüs_Bilet_Otomasyonu
                     //    }
                     //}
                 }
-                //else
-                //{
-                //    y = true;
-                //    MessageBox.Show("!!!!!!!!!!!!ELSE!!!!!!!!!!!!!!!");
-                //}
+                else
+                {
+                    y = true;
+                }
             }
 
             if (y == false)
             {
                 DialogResult dialogResult = new DialogResult();
                 MessageBox.Show($"aıleID: {aıleID}");
-                dialogResult = MessageBox.Show("İkili koltuklarda sadece aile üyeleri yan yana oturabilir. Koltuk seçim ekranına dönmek ister misiniz?", "Hatalı Koltuk Seçimi!", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+
+                if (Properties.Settings.Default.dil == "tr")
+                {
+                    dialogResult = MessageBox.Show("İkili koltuklarda sadece aile üyeleri yan yana oturabilir. Koltuk seçim ekranına dönmek ister misiniz?", "Hatalı Koltuk Seçimi!", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                }
+                else if (Properties.Settings.Default.dil == "en")
+                {
+                    dialogResult = MessageBox.Show("In double seats, only family members can sit side by side. Would you like to return to the seat selection screen?", "Incorrect Seat Selection!", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                }
+
                 aıleID = 0;
 
                 aynıAıledenMı = false;
@@ -251,7 +247,15 @@ namespace Otobüs_Bilet_Otomasyonu
                 komut.ExecuteNonQuery();
                 baglan4.Close();
 
-                MessageBox.Show("Bilet satışı başarıyla gerçekleştirildi!");
+                if (Properties.Settings.Default.dil == "tr")
+                {
+                    MessageBox.Show("Bilet satışı başarıyla gerçekleştirildi!");
+                }
+                else if (Properties.Settings.Default.dil == "en")
+                {
+                    MessageBox.Show("The ticket sale has been successful!");
+                }
+
 
                 var intList = koltuk.Select(s => Convert.ToInt32(s)).ToList();
                 var sortedValues = intList.OrderBy(v => v).ToList();
@@ -265,7 +269,14 @@ namespace Otobüs_Bilet_Otomasyonu
                     Hide();
                 }
 
-                lblKoltukNo.Text = $"{sortedValues[listIndex]} numaralı koltuğu alan müşterinin bilgilerini giriniz";
+                if (Properties.Settings.Default.dil == "tr")
+                {
+                    lblKoltukNo.Text = $"{sortedValues[listIndex]} numaralı koltuğu alan müşterinin bilgilerini giriniz";
+                }
+                else if (Properties.Settings.Default.dil == "en")
+                {
+                    lblKoltukNo.Text = $"Enter the information of the customer who bought seat number {sortedValues[listIndex]}";
+                }
 
                 foreach (var textBox in Controls.OfType<TextBox>())
                 {
@@ -280,16 +291,18 @@ namespace Otobüs_Bilet_Otomasyonu
             {
                 var intList = koltuk.Select(s => Convert.ToInt32(s)).ToList();
                 var sortedValues = intList.OrderBy(v => v).ToList();
-                txtAd.Text = Sefer_ve_Koltuk_Seçimi.seferID.ToString();
-                //koltuk[koltuk.Count - 1]
 
-                lblKoltukNo.Text = $"{sortedValues[listIndex]} numaralı koltuğu alan müşterinin bilgilerini giriniz";
-                MessageBox.Show(personelID.ToString());
-                txtSoyad.Text = personelID.ToString();
+                if (Properties.Settings.Default.dil == "tr")
+                {
+                    lblKoltukNo.Text = $"{sortedValues[listIndex]} numaralı koltuğu alan müşterinin bilgilerini giriniz";
+                }
+                else if (Properties.Settings.Default.dil == "en")
+                {
+                    lblKoltukNo.Text = $"Enter the information of the customer who bought seat number {sortedValues[listIndex]}";
+                }
 
                 foreach (var item in sortedValues)
                 {
-                    MessageBox.Show(item.ToString());
                     listBox1.Items.Add(item);
                 }
             }
